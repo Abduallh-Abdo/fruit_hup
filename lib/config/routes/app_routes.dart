@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../features/onBoarding/presentation/views/onBoarding_view.dart';
 import '../../features/splash/views/splash_view.dart';
 
 class Routes {
   static const String initialRoute = '/';
+  static const String onBoarding = '/onBording';
 }
 
 class AppRoutes {
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.initialRoute:
-  
         return MaterialPageRoute(builder: (context) => const SplashView());
+      case Routes.onBoarding:
+        return MaterialPageRoute(builder: (context) => const OnboardingView());
 
       default:
         return undefinedRoute();
