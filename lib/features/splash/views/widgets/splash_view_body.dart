@@ -34,7 +34,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   excuteNavigation() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, Routes.onBoarding);
     });
   }

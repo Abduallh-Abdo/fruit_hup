@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class OnboardingViewBody extends StatelessWidget {
-  const OnboardingViewBody({super.key});
+class OnBoardingViewBody extends StatelessWidget {
+  const OnBoardingViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
