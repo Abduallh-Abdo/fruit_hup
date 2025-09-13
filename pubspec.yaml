@@ -9,12 +9,13 @@ environment:
   sdk: ^3.9.0
 
 dependencies:
-  flutter_localizations:
-    sdk: flutter
+  dots_indicator: ^4.0.1
   equatable: ^2.0.7
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_localizations:
+    sdk: flutter
   flutter_svg: ^2.2.1
 
 dev_dependencies:
@@ -37,7 +38,7 @@ flutter:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-  #assets geneator  
+  #assets geneator
 flutter_assets:
   assets_path: assets/images
   output_path: lib/core/utils
