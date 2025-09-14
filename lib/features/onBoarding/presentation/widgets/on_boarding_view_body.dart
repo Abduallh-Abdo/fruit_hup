@@ -57,7 +57,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           maintainAnimation: true,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: KHorizontalPadding),
-            child: CustomButton(onPressed: () {}, text: 'ابدأ الان'),
+            child: CustomButton(onPressed: () {}, text: 'ابدأ الان',),
           ),
         ),
         const SizedBox(height: 43),
