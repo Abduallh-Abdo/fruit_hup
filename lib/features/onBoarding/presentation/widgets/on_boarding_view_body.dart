@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_hup/config/routes/app_routes.dart';
 import 'package:fruit_hup/core/helper/extensions/navigations.dart';
+import 'package:fruit_hup/core/services/shared_prefe_singleton.dart';
 import 'package:fruit_hup/core/utils/app_color.dart';
 import 'package:fruit_hup/features/onBoarding/presentation/widgets/on_boardin_page_view.dart';
 
@@ -61,6 +62,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             padding: const EdgeInsets.symmetric(horizontal: KHorizontalPadding),
             child: CustomButton(
               onPressed: () {
+                SharedPrefs.setBool(key: KisFirst, value: true);
                 context.pushReplacementNamed(Routes.loginView);
               },
               text: 'ابدأ الان',

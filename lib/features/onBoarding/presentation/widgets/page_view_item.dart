@@ -4,7 +4,9 @@ import 'package:fruit_hup/config/routes/app_routes.dart';
 import 'package:fruit_hup/core/helper/extensions/media_query_values.dart';
 import 'package:fruit_hup/core/helper/extensions/navigations.dart';
 
+import '../../../../core/services/shared_prefe_singleton.dart';
 import '../../../../core/utils/app_text_styles.dart';
+import '../../../../core/utils/constants.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem({
@@ -44,9 +46,11 @@ class PageViewItem extends StatelessWidget {
                   padding: EdgeInsets.all(16.0),
                   child: GestureDetector(
                     onTap: () {
+                      SharedPrefs.setBool(key: KisFirst, value: true);
+
                       context.pushReplacementNamed(Routes.loginView);
                     },
-                    child: Text('تخط', style: AppTextStyles.regular13),
+                    child: const Text('تخط', style: AppTextStyles.regular13),
                   ),
                 ),
               ),
