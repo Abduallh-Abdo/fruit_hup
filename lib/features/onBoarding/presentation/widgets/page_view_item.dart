@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruit_hup/config/routes/app_routes.dart';
 import 'package:fruit_hup/core/helper/extensions/media_query_values.dart';
+import 'package:fruit_hup/core/helper/extensions/navigations.dart';
 
-import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_text_styles.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -39,9 +40,14 @@ class PageViewItem extends StatelessWidget {
               ),
               Visibility(
                 visible: isVisible,
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: Text('تخط', style: AppTextStyles.regular13),
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pushReplacementNamed(Routes.loginView);
+                    },
+                    child: Text('تخط', style: AppTextStyles.regular13),
+                  ),
                 ),
               ),
             ],
