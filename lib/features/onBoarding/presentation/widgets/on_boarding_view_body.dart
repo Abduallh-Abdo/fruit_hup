@@ -15,13 +15,17 @@ class OnBoardingViewBody extends StatefulWidget {
 
 class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   late PageController _pageController;
-  int currentIndex = 0;
+  var currentpage = 0;
+
   @override
   void initState() {
     _pageController = PageController();
+
     _pageController.addListener(() {
-      currentIndex = _pageController.page!.round();
+      currentpage = _pageController.page!.round();
+      setState(() {});
     });
+
     super.initState();
   }
 
@@ -35,18 +39,26 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Expanded(child: OnBoardinPageView()),
+        Expanded(child: OnBoardinPageView(pageController: _pageController)),
         DotsIndicator(
           dotsCount: 2,
           decorator: DotsDecorator(
             activeColor: AppColor.primaryColor,
-            color: AppColor.primaryColor.withOpacity(.5),
+            color: currentpage == 1
+                ? AppColor.primaryColor
+                : AppColor.primaryColor.withOpacity(.5),
           ),
         ),
         const SizedBox(height: 29),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: KHorizontalPadding),
-          child: CustomButton(onPressed: () {}, text: 'ابدأ الان'),
+        Visibility(
+          visible: currentpage == 1 ? true : false,
+          maintainSize: true,
+          maintainState: true,
+          maintainAnimation: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: KHorizontalPadding),
+            child: CustomButton(onPressed: () {}, text: 'ابدأ الان'),
+          ),
         ),
         const SizedBox(height: 43),
       ],
