@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hup/core/helper/extensions/navigations.dart';
 import 'package:fruit_hup/core/utils/assets_manager.dart';
 import 'package:fruit_hup/core/utils/constants.dart';
-import 'package:fruit_hup/core/utils/or_divider.dart';
+import 'package:fruit_hup/core/widgets/or_divider.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
 import 'package:fruit_hup/features/auth/presentation/widgets/social_login_button.dart';
 
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_text_styles.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
@@ -51,7 +53,13 @@ class LoginViewBody extends StatelessWidget {
               const SizedBox(height: 33),
               CustomButton(onPressed: () {}, text: 'تسجيل الدخول'),
               const SizedBox(height: 33),
-              const DontHaveAccountWidget(),
+               DontHaveAccountWidget(
+                text: 'لا تمتلك حساب؟ ',
+                textAction: 'قم بإنشاء حساب',
+                onTap: () {
+                  context.pushNamed(Routes.signUpView);
+                },
+              ),
               const SizedBox(height: 33),
               const OrDivider(),
               const SizedBox(height: 16),
