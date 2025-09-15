@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hup/core/utils/app_color.dart';
+import 'package:fruit_hup/core/utils/app_colors.dart';
 import 'package:fruit_hup/core/utils/app_text_styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -19,9 +19,11 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         hintText: hintText,
-        hintStyle: AppTextStyles.bold13.copyWith(color: AppColor.hintTextColor),
+        hintStyle: AppTextStyles.bold13.copyWith(
+          color: AppColors.hintTextColor,
+        ),
         filled: true,
-        fillColor: AppColor.textFillColor,
+        fillColor: AppColors.textFillColor,
         border: buildBorder(),
         enabledBorder: buildBorder(),
         focusedBorder: buildBorder(),
@@ -33,7 +35,7 @@ class CustomTextFormField extends StatelessWidget {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(4),
 
-      borderSide: const BorderSide(color: AppColor.borderSideColor, width: 1),
+      borderSide: const BorderSide(color: AppColors.borderSideColor, width: 1),
     );
   }
 }

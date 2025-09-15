@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hup/core/utils/app_color.dart';
+import 'package:fruit_hup/core/utils/app_colors.dart';
 import 'package:fruit_hup/core/utils/app_text_styles.dart';
 import 'package:fruit_hup/core/utils/assets_manager.dart';
 import 'package:fruit_hup/features/onBoarding/presentation/widgets/page_view_item.dart';
@@ -25,13 +25,13 @@ class OnBoardinPageView extends StatelessWidget {
               Text(
                 ' HUB',
                 style: AppTextStyles.bold23.copyWith(
-                  color: AppColor.scondrayColor,
+                  color: AppColors.scondrayColor,
                 ),
               ),
               Text(
                 'Fruit',
                 style: AppTextStyles.bold23.copyWith(
-                  color: AppColor.primaryColor,
+                  color: AppColors.primaryColor,
                 ),
               ),
             ],

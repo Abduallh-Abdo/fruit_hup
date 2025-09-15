@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hup/config/routes/app_routes.dart';
 import 'package:fruit_hup/core/helper/extensions/navigations.dart';
 import 'package:fruit_hup/core/services/shared_prefe_singleton.dart';
-import 'package:fruit_hup/core/utils/app_color.dart';
+import 'package:fruit_hup/core/utils/app_colors.dart';
 import 'package:fruit_hup/features/onBoarding/presentation/widgets/on_boardin_page_view.dart';
 
 import '../../../../core/utils/constants.dart';
@@ -46,10 +46,10 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
         DotsIndicator(
           dotsCount: 2,
           decorator: DotsDecorator(
-            activeColor: AppColor.primaryColor,
+            activeColor: AppColors.primaryColor,
             color: currentpage == 1
-                ? AppColor.primaryColor
-                : AppColor.primaryColor.withOpacity(.5),
+                ? AppColors.primaryColor
+                : AppColors.primaryColor.withOpacity(.5),
           ),
         ),
         const SizedBox(height: 29),

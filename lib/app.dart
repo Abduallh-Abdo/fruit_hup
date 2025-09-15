@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:fruit_hup/core/utils/app_color.dart';
+import 'package:fruit_hup/core/utils/app_colors.dart';
 import 'package:fruit_hup/generated/l10n.dart';
 
 import 'config/routes/app_routes.dart';
@@ -13,7 +13,7 @@ class FruitsHup extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Cairo',
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
       ),
       localizationsDelegates: const [
         S.delegate,
