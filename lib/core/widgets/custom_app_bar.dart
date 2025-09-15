@@ -5,6 +5,8 @@ import '../utils/app_text_styles.dart';
 
 AppBar CustomAppBar({required String title, required BuildContext context}) {
   return AppBar(
+    centerTitle: true,
+    backgroundColor: Colors.white,
     leading: IconButton(
       onPressed: () {
         context.pop();
