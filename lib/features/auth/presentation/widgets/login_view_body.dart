@@ -5,6 +5,7 @@ import 'package:fruit_hup/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_text_styles.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/dont_have_account_widget,dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -12,7 +13,7 @@ class LoginViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: KHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: KHorizontalPadding),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -46,20 +47,7 @@ class LoginViewBody extends StatelessWidget {
             const SizedBox(height: 33),
             CustomButton(onPressed: () {}, text: 'تسجيل الدخول'),
             const SizedBox(height: 33),
-            Text.rich(
-              TextSpan(
-                text: 'لا تمتلك حساب؟ ',
-                style: AppTextStyles.semiBold16.copyWith(color: Colors.grey),
-                children: [
-                  TextSpan(
-                    text: ' قم بإنشاء حساب',
-                    style: AppTextStyles.semiBold16.copyWith(
-                      color: AppColors.primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const DontHaveAccountWidget(),
           ],
         ),
       ),
