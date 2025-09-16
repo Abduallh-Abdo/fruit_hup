@@ -5,10 +5,9 @@ import 'package:fruit_hup/core/utils/constants.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
 import 'package:fruit_hup/core/widgets/terms_condtions.dart';
 import 'package:fruit_hup/features/auth/presentation/cubits/signup_cubit/signup_cubit.dart';
-
-import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/dont_have_account_widget.dart';
+import '../../../../core/widgets/password_field.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -45,20 +44,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 hintText: 'البريد الالكتروني',
                 textInputType: TextInputType.emailAddress,
               ),
-
               const SizedBox(height: 16),
-              CustomTextFormField(
+              PasswordField(
                 onSaved: (value) {
                   password = value!;
                 },
-                hintText: 'كلمة المرور',
-                textInputType: TextInputType.visiblePassword,
-                suffixIcon: const Icon(
-                  Icons.remove_red_eye,
-                  color: AppColors.hintTextColor,
-                ),
               ),
-
               const SizedBox(height: 16),
               const TermsCondtions(),
               const SizedBox(height: 30),

@@ -4,6 +4,8 @@ import 'package:fruit_hup/features/auth/presentation/cubits/signup_cubit/signup_
 import 'package:fruit_hup/features/auth/presentation/widgets/signup_view_body.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../../core/helper/functions/build_error_bar.dart';
+
 class SignupViewBodyBlocConsumer extends StatelessWidget {
   const SignupViewBodyBlocConsumer({super.key});
 
@@ -13,9 +15,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SignupSuccess) {}
         if (state is SignupFailure) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+          buildErrorBar(context, state.errorMessage);
         }
       },
       builder: (context, state) {
@@ -26,4 +26,5 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
       },
     );
   }
+
 }
