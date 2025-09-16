@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hup/core/errors/exception.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthService {
   Future<User> createUserWithEmailAndPassword({
@@ -73,5 +74,20 @@ class FirebaseAuthService {
     }
   }
 
+  Future<User> signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+    await googleSignIn.initialize();
+    await googleSignIn.signOut();
+    final GoogleSignInAccount googleUser = await googleSignIn.authenticate();
 
+    final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+    final OAuthCredential credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+    );
+
+    final UserCredential userCredential = await FirebaseAuth.instance
+        .signInWithCredential(credential);
+        
+    return userCredential.user!;
+  }
 }
