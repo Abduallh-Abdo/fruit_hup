@@ -3,7 +3,7 @@ import 'package:fruit_hup/features/auth/presentation/views/login_view.dart';
 import 'package:fruit_hup/features/auth/presentation/views/signup_view.dart';
 
 import '../../features/onBoarding/presentation/views/on_boarding_view.dart';
-import '../../features/splash/views/splash_view.dart';
+import '../../features/splash/presentation/views/splash_view.dart';
 
 class Routes {
   static const String initialRoute = '/';
