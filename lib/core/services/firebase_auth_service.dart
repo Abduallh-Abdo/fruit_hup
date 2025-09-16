@@ -53,7 +53,7 @@ class FirebaseAuthService {
         throw CustomException(
           'البريد الإلكتروني او كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.',
         );
-      } else if (e.code == 'wrong-password') {
+      } else if (e.code == 'wrong-password' || e.code == 'invalid-credential') {
         throw CustomException(
           'البريد الإلكتروني او كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.',
         );
@@ -72,4 +72,6 @@ class FirebaseAuthService {
       throw CustomException('حدث خطأ. يرجى المحاولة مرة أخرى.');
     }
   }
+
+
 }
