@@ -37,7 +37,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           child: Column(
             children: [
               const SizedBox(height: 24),
-               CustomTextFormField(
+              CustomTextFormField(
                 onSaved: (value) {
                   email = value!;
                 },
@@ -92,7 +92,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               SocialLoginButton(
                 image: Assets.imagesGoogleIcon,
                 title: 'تسجيل  بواسطة جوجل',
-                onPressed: () {},
+                onPressed: () {
+                  context.read<LoginCubit>().signInWithGoogle();
+                },
               ),
               const SizedBox(height: 16),
               SocialLoginButton(
