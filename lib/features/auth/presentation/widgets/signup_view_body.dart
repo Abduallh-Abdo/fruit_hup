@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hup/core/helper/extensions/navigations.dart';
+import 'package:fruit_hup/core/helper/functions/build_error_bar.dart';
 import 'package:fruit_hup/core/utils/constants.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
 import 'package:fruit_hup/core/widgets/terms_condtions.dart';
@@ -19,6 +20,8 @@ class SignupViewBody extends StatefulWidget {
 class _SignupViewBodyState extends State<SignupViewBody> {
   final formKey = GlobalKey<FormState>();
   late String email, password, userName;
+  late bool isTermsAccepted = false;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -51,17 +54,30 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 },
               ),
               const SizedBox(height: 16),
-              const TermsCondtions(),
+              TermsCondtions(
+                onChanged: (value) {
+                  isTermsAccepted = value;
+                },
+              ),
               const SizedBox(height: 30),
               CustomButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    context.read<SignupCubit>().createUserWithEmailAndPassword(
-                      userName,
-                      email,
-                      password,
-                    );
+                    if (isTermsAccepted) {
+                      formKey.currentState!.save();
+                      context
+                          .read<SignupCubit>()
+                          .createUserWithEmailAndPassword(
+                            userName,
+                            email,
+                            password,
+                          );
+                    } else {
+                      buildErrorBar(
+                        context,
+                        'يجب الموافقة على الموافقة على الشروط والأحكام',
+                      );
+                    }
                   }
                 },
                 text: 'انشاء حساب جديد',
