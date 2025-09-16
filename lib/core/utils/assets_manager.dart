@@ -3,8 +3,8 @@ class Assets {
   Assets._();
   
   /// Assets for imagesAppleIcon
-  /// assets/images/apple_icon.png
-  static const String imagesAppleIcon = "assets/images/apple_icon.png";
+  /// assets/images/apple_icon.svg
+  static const String imagesAppleIcon = "assets/images/apple_icon.svg";
 
   /// Assets for imagesCheckIcon
   /// assets/images/check_icon.svg
