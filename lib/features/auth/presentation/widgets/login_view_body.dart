@@ -107,6 +107,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 image: Assets.imagesFacebookIcon,
                 title: 'تسجيل  بواسطة فيسبوك',
                 onPressed: () {
+                  // TODO: access permission from facebook meta for u
                   context.read<LoginCubit>().signInWithFacebook();
                 },
               ),
