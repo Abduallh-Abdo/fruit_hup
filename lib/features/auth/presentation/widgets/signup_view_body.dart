@@ -21,6 +21,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   final formKey = GlobalKey<FormState>();
   late String email, password, userName;
   late bool isTermsAccepted = false;
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
         padding: const EdgeInsets.symmetric(horizontal: KHorizontalPadding),
         child: Form(
           key: formKey,
+          autovalidateMode: autovalidateMode,
           child: Column(
             children: [
               const SizedBox(height: 24),
@@ -78,6 +80,9 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                         'يجب الموافقة على الموافقة على الشروط والأحكام',
                       );
                     }
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
                   }
                 },
                 text: 'انشاء حساب جديد',
