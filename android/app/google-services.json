@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "39473364364",
+    "project_id": "furits-hup",
+    "storage_bucket": "furits-hup.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39473364364:android:343493c07874c1cf96aaa9",
+        "android_client_info": {
+          "package_name": "com.example.fruit_hup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAePQeJ5lasE20LvFn0wH5lpv4sCeFvojw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

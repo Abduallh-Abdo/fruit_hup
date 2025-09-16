@@ -1,8 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:fruit_hup/core/helper/extensions/navigations.dart';
-
-import '../../config/routes/app_routes.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 
