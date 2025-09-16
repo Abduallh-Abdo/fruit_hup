@@ -5,6 +5,7 @@ import 'package:fruit_hup/features/auth/presentation/widgets/signup_view_body.da
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../core/helper/functions/build_error_bar.dart';
+import '../../../../core/widgets/custom_progress_hud.dart';
 
 class SignupViewBodyBlocConsumer extends StatelessWidget {
   const SignupViewBodyBlocConsumer({super.key});
@@ -19,12 +20,11 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: state is Signuploading ? true : false,
+        return CustomProgressHud(
+          isLoading: state is Signuploading ? true : false,
           child: const SignupViewBody(),
         );
       },
     );
   }
-
 }
