@@ -51,4 +51,15 @@ class AuthRepoImpl implements AuthRepo {
       return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      final user = await firebaseAuthService.signInWithGoogle();
+      return right(UserModel.fromFirebase(user));
+    } catch (e) {
+      log('Exception in AuthRepoImpl.signInWithGoogle: $e');
+      return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
+    }
+  }
 }
