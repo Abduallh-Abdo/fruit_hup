@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruit_hup/core/errors/exception.dart';
 import 'package:fruit_hup/core/errors/failure.dart';
@@ -26,6 +28,7 @@ class AuthRepoImpl implements AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
+      log('Exception in AuthRepoImpl.createUserWithEmailAndPassword: $e');
       return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
     }
   }
