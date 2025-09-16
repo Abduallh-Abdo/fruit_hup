@@ -43,7 +43,7 @@ class PageViewItem extends StatelessWidget {
               Visibility(
                 visible: isVisible,
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: GestureDetector(
                     onTap: () {
                       SharedPrefs.setBool(key: KisFirst, value: true);

@@ -3,7 +3,7 @@ import 'package:fruit_hup/core/helper/extensions/navigations.dart';
 
 import '../utils/app_text_styles.dart';
 
-AppBar CustomAppBar({required String title, required BuildContext context}) {
+AppBar customAppBar({required String title, required BuildContext context}) {
   return AppBar(
     centerTitle: true,
     backgroundColor: Colors.white,
