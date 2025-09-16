@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hup/core/errors/exception.dart';
 
-class FirbaseAuthService {
+class FirebaseAuthService {
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
