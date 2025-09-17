@@ -32,7 +32,7 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
-      var userEntity = UserModel.fromFirebase(user);
+      var userEntity = UserEntity(name: name, email: email, uId: user.uid);
       addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
@@ -43,7 +43,7 @@ class AuthRepoImpl implements AuthRepo {
     } catch (e) {
       if (user != null) {
         await firebaseAuthService.deleteUSer();
-      } 
+      }
       log('Exception in AuthRepoImpl.createUserWithEmailAndPassword: $e');
       return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
     }
