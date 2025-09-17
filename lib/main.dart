@@ -10,10 +10,10 @@ import 'core/services/shared_prefe_singleton.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Bloc.observer = AppBlocObserver();
 
   setupGetIt();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await SharedPrefs.init();
   runApp(const FruitsHup());
 }
