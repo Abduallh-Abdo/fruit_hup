@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hup/core/errors/exception.dart';
 import 'package:fruit_hup/core/errors/failure.dart';
 import 'package:fruit_hup/core/services/database_service.dart';
@@ -25,8 +26,9 @@ class AuthRepoImpl implements AuthRepo {
     required String email,
     required String password,
   }) async {
+    User? user;
     try {
-      final user = await firebaseAuthService.createUserWithEmailAndPassword(
+      user = await firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -34,8 +36,14 @@ class AuthRepoImpl implements AuthRepo {
       addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUSer();
+      }
       return left(ServerFailure(e.message));
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUSer();
+      } 
       log('Exception in AuthRepoImpl.createUserWithEmailAndPassword: $e');
       return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
     }
