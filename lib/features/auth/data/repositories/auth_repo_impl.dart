@@ -36,16 +36,18 @@ class AuthRepoImpl implements AuthRepo {
       addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
-      if (user != null) {
-        await firebaseAuthService.deleteUSer();
-      }
+      await checkDeleteUser(user);
       return left(ServerFailure(e.message));
     } catch (e) {
-      if (user != null) {
-        await firebaseAuthService.deleteUSer();
-      }
+      await checkDeleteUser(user);
       log('Exception in AuthRepoImpl.createUserWithEmailAndPassword: $e');
       return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
+    }
+  }
+
+  Future<void> checkDeleteUser(User? user) async {
+    if (user != null) {
+      await firebaseAuthService.deleteUSer();
     }
   }
 
@@ -70,10 +72,14 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    User? user;
     try {
-      final user = await firebaseAuthService.signInWithGoogle();
-      return right(UserModel.fromFirebase(user));
+      user = await firebaseAuthService.signInWithGoogle();
+      final userEntity = UserModel.fromFirebase(user);
+      return right(userEntity);
     } catch (e) {
+      await checkDeleteUser(user);
+
       log('Exception in AuthRepoImpl.signInWithGoogle: $e');
       return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
     }
@@ -81,10 +87,13 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    User? user;
     try {
-      final user = await firebaseAuthService.signInWithFacebook();
-      return right(UserModel.fromFirebase(user));
+      user = await firebaseAuthService.signInWithFacebook();
+      final userEntity = UserModel.fromFirebase(user);
+      return right(userEntity);
     } catch (e) {
+      await checkDeleteUser(user);
       log('Exception in AuthRepoImpl.signInWithFacebook: $e');
       return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
     }
