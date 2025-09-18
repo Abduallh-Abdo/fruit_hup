@@ -99,29 +99,29 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
-  @override
-  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
-    User? user;
-    try {
-      user = await firebaseAuthService.signInWithFacebook();
-      final userEntity = UserModel.fromFirebase(user);
-      final isUserEsxists = await databaseService.checkIfDataExists(
-        path: BackendEndpoint.isUserExist,
-        documentId: user.uid,
-      );
+  // @override
+  // Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+  //   User? user;
+  //   try {
+  //     user = await firebaseAuthService.signInWithFacebook();
+  //     final userEntity = UserModel.fromFirebase(user);
+  //     final isUserEsxists = await databaseService.checkIfDataExists(
+  //       path: BackendEndpoint.isUserExist,
+  //       documentId: user.uid,
+  //     );
 
-      if (isUserEsxists) {
-        await getUserData(uId: user.uid);
-      } else {
-        await addUserData(user: userEntity);
-      }
-      return right(userEntity);
-    } catch (e) {
-      await checkDeleteUser(user);
-      log('Exception in AuthRepoImpl.signInWithFacebook: $e');
-      return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
-    }
-  }
+  //     if (isUserEsxists) {
+  //       await getUserData(uId: user.uid);
+  //     } else {
+  //       await addUserData(user: userEntity);
+  //     }
+  //     return right(userEntity);
+  //   } catch (e) {
+  //     await checkDeleteUser(user);
+  //     log('Exception in AuthRepoImpl.signInWithFacebook: $e');
+  //     return left(const ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
+  //   }
+  // }
 
   @override
   Future addUserData({required UserEntity user}) async {

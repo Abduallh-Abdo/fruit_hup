@@ -114,7 +114,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 title: 'تسجيل  بواسطة فيسبوك',
                 onPressed: () {
                   // TODO: access permission from facebook meta for u
-                  context.read<LoginCubit>().signInWithFacebook();
+                  // context.read<LoginCubit>().signInWithFacebook();
                 },
               ),
               const SizedBox(height: 16),
