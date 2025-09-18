@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruit_hup/core/errors/exception.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -92,18 +91,18 @@ class FirebaseAuthService {
     return userCredential.user!;
   }
 
-  Future<User> signInWithFacebook() async {
-    final LoginResult loginResult = await FacebookAuth.instance.login();
+  // Future<User> signInWithFacebook() async {
+  //   final LoginResult loginResult = await FacebookAuth.instance.login();
 
-    final OAuthCredential facebookAuthCredential =
-        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+  //   final OAuthCredential facebookAuthCredential =
+  //       FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
 
-    return (await FirebaseAuth.instance.signInWithCredential(
-      facebookAuthCredential,
-    )).user!;
-  }
+  //   return (await FirebaseAuth.instance.signInWithCredential(
+  //     facebookAuthCredential,
+  //   )).user!;
+  // }
 
-  Future<void> deleteUSer() async {
-    await FirebaseAuth.instance.currentUser!.delete();
-  }
+  // Future<void> deleteUSer() async {
+  //   await FirebaseAuth.instance.currentUser!.delete();
+  // }
 }
