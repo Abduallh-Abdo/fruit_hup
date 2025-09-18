@@ -12,7 +12,7 @@ class CustomHomeAppBar extends StatelessWidget {
     return ListTile(
       leading: Image.asset(Assets.imagesProfileImage),
       title: Text(
-        'صباح الخير',
+        'صباح الخير !..',
         style: AppTextStyles.regular16.copyWith(color: AppColors.hintTextColor),
       ),
       subtitle: const Text('دانشو', style: AppTextStyles.bold16),
