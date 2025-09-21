@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruit_hup/config/routes/app_routes.dart';
+import 'package:fruit_hup/core/services/firebase_auth_service.dart';
 import 'package:fruit_hup/core/utils/assets_manager.dart';
 
 import '../../../../core/services/shared_prefe_singleton.dart';
@@ -44,7 +45,13 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     Future.delayed(const Duration(seconds: 3), () {
       if (isOnBoardingSeen) {
-        Navigator.pushReplacementNamed(context, Routes.loginView);
+        var isLogged = FirebaseAuthService().isLogged();
+
+        if (isLogged) {
+          Navigator.pushReplacementNamed(context, Routes.homeView);
+        } else {
+          Navigator.pushReplacementNamed(context, Routes.loginView);
+        }
       } else {
         Navigator.pushReplacementNamed(context, Routes.onBoarding);
       }
