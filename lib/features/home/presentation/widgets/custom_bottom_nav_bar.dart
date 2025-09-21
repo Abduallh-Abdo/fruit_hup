@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hup/features/home/presentation/widgets/navigation_bar_item.dart';
+
+import '../../domain/entities/bottom_nav_bar_entity.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key});
@@ -26,21 +29,19 @@ class CustomBottomNavBar extends StatelessWidget {
         ],
       ),
 
-      // child: Row(
-      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //   children: [
-      //     IconButton(onPressed: () {}, icon: const Icon(Icons.home_outlined)),
-      //     IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
-      //     IconButton(
-      //       onPressed: () {},
-      //       icon: const Icon(Icons.shopping_cart_outlined),
-      //     ),
-      //     IconButton(
-      //       onPressed: () {},
-      //       icon: const Icon(Icons.person_2_outlined),
-      //     ),
-      //   ],
-      // ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: listBottomNavBarEntity.map((element) {
+          return NavigationNarItem(
+            bottomNavBarEntity: element,
+            isActive: false,
+          );
+        }).toList(),
+      ),
     );
   }
 }
+
+
+
+
