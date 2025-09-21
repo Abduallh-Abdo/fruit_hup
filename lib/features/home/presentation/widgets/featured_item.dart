@@ -10,7 +10,7 @@ class FeaturedItem extends StatelessWidget {
   const FeaturedItem({super.key});
   @override
   Widget build(BuildContext context) {
-    final itemWidth = context.width;
+    final itemWidth = context.width - 32;
 
     return SizedBox(
       width: itemWidth,
