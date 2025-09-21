@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hup/core/helper/functions/get_user.dart';
 import 'package:fruit_hup/core/utils/app_colors.dart';
 import 'package:fruit_hup/core/utils/app_text_styles.dart';
 import 'package:fruit_hup/core/utils/assets_manager.dart';
@@ -16,7 +17,7 @@ class CustomHomeAppBar extends StatelessWidget {
         'صباح الخير !..',
         style: AppTextStyles.regular16.copyWith(color: AppColors.hintTextColor),
       ),
-      subtitle: const Text('دانشو', style: AppTextStyles.bold16),
+      subtitle: Text(getUser().name, style: AppTextStyles.bold16),
       trailing: const NotificationButton(),
     );
   }
