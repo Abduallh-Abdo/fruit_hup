@@ -3,9 +3,15 @@ import 'package:fruit_hup/features/home/presentation/widgets/navigation_bar_item
 
 import '../../domain/entities/bottom_nav_bar_entity.dart';
 
-class CustomBottomNavBar extends StatelessWidget {
+class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({super.key});
 
+  @override
+  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
+}
+
+class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
+  final selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,17 +37,15 @@ class CustomBottomNavBar extends StatelessWidget {
 
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: listBottomNavBarEntity.map((element) {
+        children: listBottomNavBarEntity.asMap().entries.map((element) {
+          var index = element.key;
+          var entity = element.value;
           return NavigationNarItem(
-            bottomNavBarEntity: element,
-            isActive: false,
+            bottomNavBarEntity: entity,
+            isActive: selectedIndex == index,
           );
         }).toList(),
       ),
     );
   }
 }
-
-
-
-

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/active_item.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/in_active_item.dart';
 
-import '../../../../core/utils/assets_manager.dart';
 import '../../domain/entities/bottom_nav_bar_entity.dart';
 
 class NavigationNarItem extends StatelessWidget {
@@ -16,7 +15,10 @@ class NavigationNarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isActive
-        ? const ActiveItem(image: Assets.imagesHomeBold)
+        ? ActiveItem(
+            image: bottomNavBarEntity.activeImage,
+            name: bottomNavBarEntity.name,
+          )
         : InActiveItem(image: bottomNavBarEntity.inactiveImage);
   }
 }
