@@ -11,7 +11,7 @@ class CustomBottomNavBar extends StatefulWidget {
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
-  final selectedIndex = 0;
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,9 +40,19 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         children: listBottomNavBarEntity.asMap().entries.map((element) {
           var index = element.key;
           var entity = element.value;
-          return NavigationNarItem(
-            bottomNavBarEntity: entity,
-            isActive: selectedIndex == index,
+          return Expanded(
+            flex: index == selectedIndex ? 3 : 2,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
+              child: NavigationNarItem(
+                bottomNavBarEntity: entity,
+                isActive: selectedIndex == index,
+              ),
+            ),
           );
         }).toList(),
       ),
