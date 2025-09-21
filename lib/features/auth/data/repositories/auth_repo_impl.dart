@@ -66,6 +66,7 @@ class AuthRepoImpl implements AuthRepo {
       );
 
       final userEnitiy = await getUserData(uId: user.uid);
+      await saveUserData(user: userEnitiy);
       return right(userEnitiy);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
