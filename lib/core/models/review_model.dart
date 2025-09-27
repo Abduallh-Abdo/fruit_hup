@@ -1,4 +1,3 @@
-
 import '../entities/review_entity.dart';
 
 class ReviewModel {
@@ -43,5 +42,15 @@ class ReviewModel {
       'date': date,
       'comment': comment,
     };
+  }
+
+  ReviewEntity toEntity() {
+    return ReviewEntity(
+      name: name,
+      image: image,
+      ratting: ratting,
+      date: date,
+      comment: comment,
+    );
   }
 }
