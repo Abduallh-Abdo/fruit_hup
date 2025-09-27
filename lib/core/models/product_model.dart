@@ -5,8 +5,6 @@ import '../entities/product_entity.dart';
 import '../entities/review_entity.dart';
 import 'review_model.dart';
 
-
-
 class ProductModel {
   final String name;
   final String code;
@@ -22,6 +20,7 @@ class ProductModel {
   final num ratingCount = 0;
   final int unitAmount;
   final List<ReviewModel> revirws;
+  final num sellingCount;
 
   ProductModel({
     required this.name,
@@ -36,24 +35,24 @@ class ProductModel {
     required this.numberOfCalories,
     required this.unitAmount,
     required this.revirws,
+    required this.sellingCount,
   });
 
-  factory ProductModel.fromEntity(ProductEntity addProductEntity) {
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      name: addProductEntity.name,
-      code: addProductEntity.code,
-      description: addProductEntity.description,
-      price: addProductEntity.price,
-      fileImage: addProductEntity.fileImage,
-      isFeatured: addProductEntity.isFeatured,
-      iSOrganic: addProductEntity.iSOrganic,
-      imageUrl: addProductEntity.imageUrl,
-      expirationMonths: addProductEntity.expirationMonths,
-      numberOfCalories: addProductEntity.numberOfCalories,
-      unitAmount: addProductEntity.unitAmount,
-      revirws: addProductEntity.reviews
-          .map((e) => ReviewModel.fromEntity(e))
-          .toList(),
+      name: json['name'],
+      code: json['code'],
+      description: json['description'],
+      price: json['price'],
+      fileImage: File(json['fileImage']),
+      isFeatured: json['isFeatured'],
+      imageUrl: json['imageUrl'],
+      expirationMonths: json['expirationMonths'],
+      iSOrganic: json['isOrganic'],
+      numberOfCalories: json['numberOfCalories'],
+      unitAmount: json['unitAmount'],
+      revirws: json['reviews'].map((e) => ReviewModel.fromJson(e)).toList(),
+      sellingCount: json['sellingCount'],
     );
   }
 
@@ -72,6 +71,7 @@ class ProductModel {
       'unitAmount': unitAmount,
       'isOrganic': iSOrganic,
       'reviews': revirws.map((e) => e.toJson()).toList(),
+      'sellingCount': sellingCount,
     };
   }
 
