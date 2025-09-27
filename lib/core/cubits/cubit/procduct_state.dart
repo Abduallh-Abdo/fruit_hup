@@ -1,24 +1,21 @@
 part of 'procduct_cubit.dart';
 
-sealed class ProcductState extends Equatable {
-  const ProcductState();
+sealed class ProductState extends Equatable {
+  const ProductState();
 
   @override
   List<Object> get props => [];
 }
 
-final class ProcductInitial extends ProcductState {}
-
-final class ProcductLoading extends ProcductState {}
-
-final class ProcductFailure extends ProcductState {
+final class ProductInitial extends ProductState {}
+final class ProductLoading extends ProductState {}
+final class ProductFailure extends ProductState {
   final String errorMessage;
 
-  const ProcductFailure({required this.errorMessage});
+  const ProductFailure({required this.errorMessage});
 }
-
-final class ProcductSuccess extends ProcductState {
+final class ProductSuccess extends ProductState {
   final List<ProductEntity> products;
 
-  const ProcductSuccess({required this.products});
+  const ProductSuccess({required this.products});
 }

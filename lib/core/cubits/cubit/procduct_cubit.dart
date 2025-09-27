@@ -6,23 +6,24 @@ import '../../entities/product_entity.dart';
 
 part 'procduct_state.dart';
 
-class ProcductCubit extends Cubit<ProcductState> {
-  ProcductCubit(this.productsRepo) : super(ProcductInitial());
+class ProductCubit extends Cubit<ProductState> {
+  ProductCubit(this.productsRepo) : super(ProductInitial());
   final ProductsRepo productsRepo;
   Future<void> getProducts() async {
-    emit(ProcductLoading());
+    emit(ProductLoading());
     final result = await productsRepo.getProducts();
     result.fold(
-      (failure) => emit(ProcductFailure(errorMessage: failure.message)),
-      (product) => emit(ProcductSuccess(products: product)),
+      (failure) => emit(ProductFailure(errorMessage: failure.message)),
+      (product) => emit(ProductSuccess(products: product)),
     );
   }
+
   Future<void> getBestSellingProducts() async {
-    emit(ProcductLoading());
+    emit(ProductLoading());
     final result = await productsRepo.getBestSellingProducts();
     result.fold(
-      (failure) => emit(ProcductFailure(errorMessage: failure.message)),
-      (product) => emit(ProcductSuccess(products: product)),
+      (failure) => emit(ProductFailure(errorMessage: failure.message)),
+      (product) => emit(ProductSuccess(products: product)),
     );
   }
 }
