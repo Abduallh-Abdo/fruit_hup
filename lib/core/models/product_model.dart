@@ -1,8 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:io';
-
 import '../entities/product_entity.dart';
-import '../entities/review_entity.dart';
+import '../helper/functions/get_avg_rating.dart';
 import 'review_model.dart';
 
 class ProductModel {
@@ -10,13 +7,12 @@ class ProductModel {
   final String code;
   final String description;
   final num price;
-  final File fileImage;
   final bool isFeatured;
   String? imageUrl;
   final int expirationMonths;
   final bool iSOrganic;
   final int numberOfCalories;
-  final num avgRating = 0;
+  final num avgRating;
   final num ratingCount = 0;
   final int unitAmount;
   final List<ReviewModel> revirws;
@@ -27,7 +23,6 @@ class ProductModel {
     required this.code,
     required this.description,
     required this.price,
-    required this.fileImage,
     required this.isFeatured,
     this.imageUrl,
     required this.expirationMonths,
@@ -36,23 +31,29 @@ class ProductModel {
     required this.unitAmount,
     required this.revirws,
     required this.sellingCount,
+    required this.avgRating,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
+    final reviews = json['reviews'] != null
+        ? List<ReviewModel>.from(
+            json['reviews'].map((e) => ReviewModel.fromJson(e)),
+          )
+        : [];
     return ProductModel(
       name: json['name'],
       code: json['code'],
       description: json['description'],
       price: json['price'],
-      fileImage: File(json['fileImage']),
       isFeatured: json['isFeatured'],
       imageUrl: json['imageUrl'],
       expirationMonths: json['expirationMonths'],
       iSOrganic: json['isOrganic'],
       numberOfCalories: json['numberOfCalories'],
       unitAmount: json['unitAmount'],
-      revirws: json['reviews'].map((e) => ReviewModel.fromJson(e)).toList(),
+      revirws: reviews as List<ReviewModel>,
       sellingCount: json['sellingCount'],
+      avgRating: getAvgRating(reviews.map((e) => e.toEntity()).toList()),
     );
   }
 
@@ -81,14 +82,14 @@ class ProductModel {
       code: code,
       description: description,
       price: price,
-      fileImage: fileImage,
       isFeatured: isFeatured,
       imageUrl: imageUrl,
       expirationMonths: expirationMonths,
       numberOfCalories: numberOfCalories,
       unitAmount: unitAmount,
       iSOrganic: iSOrganic,
-      reviews: revirws.map((e) => e.toJson()).toList() as List<ReviewEntity>,
+      reviews: revirws.map((e) => e.toEntity()).toList(),
+      avgRating: avgRating,
     );
   }
 }

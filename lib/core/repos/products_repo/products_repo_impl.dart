@@ -34,7 +34,7 @@ class ProductsRepoImpl implements ProductsRepo {
         data.map((e) => ProductModel.fromJson(e).toEntity()).toList(),
       );
     } catch (e) {
-      log(e.toString());
+      log('Exception in ProductsRepoImpl.getBestSellingProducts: $e');
       return const Left(ServerFailure('حدث خطأ. يرجى المحاولة مرة أخرى.'));
     }
   }
