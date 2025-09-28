@@ -8,6 +8,7 @@ class BsetSellingGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid.builder(
+      itemCount: procduct.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 8,
@@ -15,7 +16,7 @@ class BsetSellingGrid extends StatelessWidget {
         childAspectRatio: 163 / 214,
       ),
       itemBuilder: (context, index) {
-        return const FruitItem();
+        return FruitItem(productEntity: procduct[index]);
       },
     );
   }

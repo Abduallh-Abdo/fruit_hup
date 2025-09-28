@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hup/core/entities/product_entity.dart';
 import 'package:fruit_hup/core/utils/assets_manager.dart';
 
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
-
+  const FruitItem({super.key, required this.productEntity});
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,13 +29,13 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Image.asset(Assets.imagesWatermelonTest),
+                Image.network(productEntity.imageUrl!),
                 const SizedBox(height: 24),
                 ListTile(
-                  title: const Text('بطيخ', style: AppTextStyles.bold13),
+                  title: Text(productEntity.name, style: AppTextStyles.bold13),
                   subtitle: Text.rich(
                     TextSpan(
-                      text: '25',
+                      text: productEntity.price.toString(),
                       style: AppTextStyles.bold13.copyWith(
                         color: AppColors.scondrayColor,
                       ),
