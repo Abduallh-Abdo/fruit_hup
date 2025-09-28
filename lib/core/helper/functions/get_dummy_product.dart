@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:fruit_hup/core/entities/product_entity.dart';
 
 ProductEntity getDummyProduct() {
@@ -8,7 +6,6 @@ ProductEntity getDummyProduct() {
     code: '123',
     description: 'A fruit',
     price: 10,
-    fileImage: File(''),
     isFeatured: true,
     imageUrl: 'https://example.com/apple.jpg',
     expirationMonths: 6,
@@ -16,6 +13,7 @@ ProductEntity getDummyProduct() {
     unitAmount: 1,
     iSOrganic: true,
     reviews: [],
+    avgRating: 4.5,
   );
 }
 
