@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_hup/core/cubits/cubit/procduct_cubit.dart';
+import 'package:fruit_hup/core/get_it.dart';
+import 'package:fruit_hup/features/home/presentation/widgets/product_view_body.dart';
+
+import '../../../../core/repos/products_repo/products_repo.dart';
+
+class ProductView extends StatelessWidget {
+  const ProductView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ProductCubit(
+        productsRepo: sl<ProductsRepo>(),
+      ),
+      child: const ProductViewBody(),
+    );
+  }
+}
