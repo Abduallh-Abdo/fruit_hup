@@ -2,15 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/custom_bottom_nav_bar.dart';
 
 import '../widgets/home_view.dart';
+import '../widgets/product_view.dart';
 
-class MainView extends StatelessWidget {
+class MainView extends StatefulWidget {
   const MainView({super.key});
 
   @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  int currentViewIndex = 0;
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      bottomNavigationBar: CustomBottomNavBar(),
-      body: SafeArea(child: HomeView()),
+    return Scaffold(
+      bottomNavigationBar: CustomBottomNavBar(
+        onItemTapped: (index) {
+          currentViewIndex = index;
+          setState(() {});
+        },
+      ),
+      body: SafeArea(
+        child: IndexedStack(
+          index: currentViewIndex,
+          children: const [HomeView(), ProductView()],
+        ),
+      ),
     );
   }
+
 }

@@ -4,8 +4,8 @@ import 'package:fruit_hup/features/home/presentation/widgets/navigation_bar_item
 import '../../domain/entities/bottom_nav_bar_entity.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
-  const CustomBottomNavBar({super.key});
-
+  const CustomBottomNavBar({super.key, required this.onItemTapped});
+  final ValueChanged<int> onItemTapped;
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
 }
@@ -47,6 +47,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                 setState(() {
                   selectedIndex = index;
                 });
+                widget.onItemTapped(index);
               },
               child: NavigationNarItem(
                 bottomNavBarEntity: entity,
