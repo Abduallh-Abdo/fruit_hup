@@ -86,6 +86,10 @@ class Assets {
   /// assets/images/shopping_cart_outline.svg
   static const String imagesShoppingCartOutline = "assets/images/shopping_cart_outline.svg";
 
+  /// Assets for imagesSortby
+  /// assets/images/sortby.svg
+  static const String imagesSortby = "assets/images/sortby.svg";
+
   /// Assets for imagesSplashBottom
   /// assets/images/splash_bottom.svg
   static const String imagesSplashBottom = "assets/images/splash_bottom.svg";
