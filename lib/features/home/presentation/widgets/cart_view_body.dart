@@ -3,9 +3,7 @@ import 'package:fruit_hup/core/helper/extensions/media_query_values.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
 import 'package:fruit_hup/core/widgets/custom_divider.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/cart_header.dart';
-import 'package:fruit_hup/features/home/presentation/widgets/cart_item.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/cart_item_list.dart';
-import 'package:fruit_hup/generated/l10n.dart';
 
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/build_app_bar.dart';
