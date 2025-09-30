@@ -9,6 +9,7 @@ AppBar buildAppBar({
   required String title,
   required BuildContext context,
   bool showBackButton = true,
+  bool showNotificationButton = true,
 }) {
   return AppBar(
     backgroundColor: Colors.white,
@@ -22,10 +23,13 @@ AppBar buildAppBar({
         icon: const Icon(Icons.arrow_back_ios),
       ),
     ),
-    actions: const [
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: KHorizontalPadding),
-        child: NotificationButton(),
+    actions: [
+      Visibility(
+        visible: showNotificationButton,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: KHorizontalPadding),
+          child: NotificationButton(),
+        ),
       ),
     ],
     title: Text(title, style: AppTextStyles.bold19),
