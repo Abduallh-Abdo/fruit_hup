@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hup/core/cubits/cubit/procduct_cubit.dart';
 import 'package:fruit_hup/core/helper/functions/custom_error_text.dart';
-import 'package:fruit_hup/features/home/presentation/widgets/bset_selling_grid.dart';
+import 'package:fruit_hup/features/home/presentation/widgets/products_grid.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/helper/functions/get_dummy_product.dart';
 
-class BsetSellingGridBolcBuilder extends StatelessWidget {
-  const BsetSellingGridBolcBuilder({super.key});
+class ProductsGridBolcBuilder extends StatelessWidget {
+  const ProductsGridBolcBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {

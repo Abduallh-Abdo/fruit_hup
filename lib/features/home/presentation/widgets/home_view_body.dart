@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hup/core/cubits/cubit/procduct_cubit.dart';
 import 'package:fruit_hup/core/utils/constants.dart';
-import 'package:fruit_hup/features/home/presentation/widgets/bset_selling_grid_bolc_builder.dart';
+import 'package:fruit_hup/features/home/presentation/widgets/products_grid_bolc_builder.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/bset_selling_header.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/custom_home_app_bar.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/featured_list.dart';
@@ -44,7 +44,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ],
             ),
           ),
-          BsetSellingGridBolcBuilder(),
+          ProductsGridBolcBuilder(),
         ],
       ),
     );
