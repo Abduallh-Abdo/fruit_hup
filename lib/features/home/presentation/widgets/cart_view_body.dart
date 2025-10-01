@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hup/core/helper/extensions/media_query_values.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
 import 'package:fruit_hup/core/widgets/custom_divider.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/cart_header.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/cart_item_list.dart';
- 
+
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/build_app_bar.dart';
+import '../cubit/cart_cubit/cart_cubit.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cart = context.read<CartCubit>().cartEntity.cartItmes;
     return Stack(
       children: [
         CustomScrollView(
@@ -32,11 +35,13 @@ class CartViewBody extends StatelessWidget {
                 ],
               ),
             ),
-            const SliverToBoxAdapter(child: CustomDivider()),
-            const CartItemList(
-              cartItemLsit: [],
+            SliverToBoxAdapter(
+              child: cart.isEmpty ? const SizedBox() : const CustomDivider(),
             ),
-            const SliverToBoxAdapter(child: CustomDivider()),
+            const CartItemList(cartItemLsit: []),
+            SliverToBoxAdapter(
+              child: cart.isEmpty ? const SizedBox() : const CustomDivider(),
+            ),
           ],
         ),
         Positioned(
