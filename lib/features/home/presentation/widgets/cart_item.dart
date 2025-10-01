@@ -10,9 +10,10 @@ import '../../../../core/utils/assets_manager.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.cartItemEntity});
-final CartItemEntity cartItemEntity;
+  final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
+    final productEntity = cartItemEntity.productEntity;
     return IntrinsicHeight(
       child: Row(
         children: [
@@ -20,10 +21,7 @@ final CartItemEntity cartItemEntity;
             width: 73,
             height: 92,
             decoration: const BoxDecoration(color: Color(0xffF3F5F7)),
-            child: const CustomNetworkImage(
-              imageUrl:
-                  'https://imgs.search.brave.com/dS2paa5-W6i_3D0TSV1iL9lsIPUDWY0q1WrW_zrYuuE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS12ZWN0b3Iv/Z2xpdGNoLWVycm9y/LTQwNC1wYWdlXzIz/LTIxNDgxMDU0MDQu/anBnP3NlbXQ9YWlz/X2h5YnJpZCZ3PTc0/MCZxPTgw',
-            ),
+            child: CustomNetworkImage(imageUrl: productEntity.imageUrl!),
           ),
           const SizedBox(width: 17),
           Expanded(
@@ -34,7 +32,7 @@ final CartItemEntity cartItemEntity;
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('بطيخ', style: AppTextStyles.bold13),
+                    Text(productEntity.name, style: AppTextStyles.bold13),
                     GestureDetector(
                       onTap: () {},
                       child: SvgPicture.asset(Assets.imagesTrashIcon),
@@ -42,12 +40,23 @@ final CartItemEntity cartItemEntity;
                   ],
                 ),
                 Text(
-                  '2 كم',
+                  '${cartItemEntity.calculateTotalWeight()} كم',
                   style: AppTextStyles.regular13.copyWith(
                     color: AppColors.scondrayColor,
                   ),
                 ),
-                const CartItemActionButtons(),
+                Row(
+                  children: [
+                    CartItemActionButtons(cartItemEntity: cartItemEntity),
+                    const Spacer(),
+                    Text(
+                      '${cartItemEntity.calculateTotalPrice()} جنيه',
+                      style: AppTextStyles.bold16.copyWith(
+                        color: AppColors.scondrayColor,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
