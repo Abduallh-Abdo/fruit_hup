@@ -11,7 +11,7 @@ class ActiveItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: const EdgeInsets.only(left: 16),
+        padding: const EdgeInsets.only(left: 15),
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
