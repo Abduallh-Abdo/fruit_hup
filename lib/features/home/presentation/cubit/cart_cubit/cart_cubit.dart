@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:fruit_hup/core/entities/product_entity.dart';
+import 'package:fruit_hup/features/home/domain/entities/cart_item_entity.dart';
 
 import '../../../domain/entities/cart_entity.dart';
 
@@ -11,13 +11,18 @@ class CartCubit extends Cubit<CartState> {
 
   final CartEntity cartEntity = CartEntity(cartItmes: []);
 
-void addProduct(ProductEntity productEntity) {
+  void addProduct(ProductEntity productEntity) {
     final item = cartEntity.getCartItem(productEntity);
     if (cartEntity.isExist(productEntity)) {
-      item.increaseCount();
+      item.increaseQuantity();
     } else {
       cartEntity.addCartItem(item);
     }
-    emit(CartProductAdded());
+    emit(CartItemAdded());
+  }
+
+  void deleteCartItem(CartItemEntity cartItemEntity) {
+    cartEntity.removeCartItem(cartItemEntity);
+    emit(CartItemRemoved());
   }
 }
