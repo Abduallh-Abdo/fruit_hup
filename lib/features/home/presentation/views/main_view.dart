@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hup/features/home/presentation/cubit/cart_cubit/cart_cubit.dart';
-import 'package:fruit_hup/features/home/presentation/views/cart_view.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/custom_bottom_nav_bar.dart';
 
-import 'home_view.dart';
-import 'product_view.dart';
+import '../widgets/main_view_body_bloc_lisner.dart';
+
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -28,10 +27,7 @@ class _MainViewState extends State<MainView> {
           },
         ),
         body: SafeArea(
-          child: IndexedStack(
-            index: currentViewIndex,
-            children: const [HomeView(), ProductView(), CartView()],
-          ),
+          child: MainViewBodyBlocListener(currentViewIndex: currentViewIndex),
         ),
       ),
     );
