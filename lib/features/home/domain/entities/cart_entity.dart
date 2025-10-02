@@ -17,4 +17,13 @@ class CartEntity {
     }
     return false;
   }
+
+ CartItemEntity  getCartItem(ProductEntity product) {
+    for (var item in cartItmes) {
+      if (item.productEntity == product) {
+        return item;
+      }
+    }
+    return CartItemEntity(productEntity: product, count: 1);
+  }
 }
