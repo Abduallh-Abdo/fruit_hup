@@ -71,17 +71,14 @@ class FruitItem extends StatelessWidget {
                     ),
                   ),
 
-                  trailing: GestureDetector(
-                    onTap: () {
-                      context.read<CartCubit>().addProduct(productEntity);
-                    },
-                    child: CircleAvatar(
-                      backgroundColor: AppColors.primaryColor,
-                      child: IconButton(
-                        icon: const Icon(Icons.add),
-                        color: Colors.white,
-                        onPressed: () {},
-                      ),
+                  trailing: CircleAvatar(
+                    backgroundColor: AppColors.primaryColor,
+                    child: IconButton(
+                      icon: const Icon(Icons.add),
+                      color: Colors.white,
+                      onPressed: () {
+                        context.read<CartCubit>().addProduct(productEntity);
+                      },
                     ),
                   ),
                 ),
