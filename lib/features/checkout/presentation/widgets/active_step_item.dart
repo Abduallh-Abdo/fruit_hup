@@ -8,15 +8,18 @@ class ActiveStepItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 11.5,
           backgroundColor: AppColors.primaryColor,
           child: Icon(Icons.check, color: Colors.white, size: 16),
         ),
-        SizedBox(width: 4),
-        Text('الشحن', style: AppTextStyles.bold13),
+        const SizedBox(width: 4),
+        Text(
+          'الشحن',
+          style: AppTextStyles.bold13.copyWith(color: AppColors.primaryColor),
+        ),
       ],
     );
   }
