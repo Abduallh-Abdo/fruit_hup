@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hup/features/auth/presentation/views/login_view.dart';
 import 'package:fruit_hup/features/auth/presentation/views/signup_view.dart';
 import 'package:fruit_hup/features/best_selling_fruits/presentation/views/best_selling_view.dart';
+import 'package:fruit_hup/features/checkout/presentation/views/checkout_view.dart';
 import 'package:fruit_hup/features/home/presentation/views/main_view.dart';
 
 import '../../features/onBoarding/presentation/views/on_boarding_view.dart';
@@ -14,6 +15,7 @@ class Routes {
   static const String signUpView = '/signUpView';
   static const String homeView = '/homeView';
   static const String bestSellingView = '/bestSellingView';
+  static const String checkoutView = '/checkoutView';
 }
 
 class AppRoutes {
@@ -31,6 +33,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const MainView());
       case Routes.bestSellingView:
         return MaterialPageRoute(builder: (context) => const BestSellingView());
+      case Routes.checkoutView:
+        return MaterialPageRoute(builder: (context) => const CheckoutView());
 
       default:
         return undefinedRoute();
