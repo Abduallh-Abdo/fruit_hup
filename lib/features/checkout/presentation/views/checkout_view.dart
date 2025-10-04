@@ -13,7 +13,7 @@ class CheckoutView extends StatelessWidget {
         showNotificationButton: false,
         context: context,
       ),
-      body: CheckoutViewBody(),
+      body: const CheckoutViewBody(),
     );
   }
 }
