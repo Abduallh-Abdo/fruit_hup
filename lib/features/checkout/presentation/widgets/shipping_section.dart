@@ -24,7 +24,7 @@ class _ShippingSectionState extends State<ShippingSection> {
           subtitle: 'التسليم من المكان',
           price: '40 جنيه',
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         ShippingItem(
           onTap: () {
             isSelected = 1;
