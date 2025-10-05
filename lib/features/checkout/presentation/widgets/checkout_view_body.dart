@@ -3,6 +3,10 @@ import 'package:fruit_hup/core/utils/constants.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps_page_view.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../core/helper/functions/build_error_bar.dart';
+import '../../domain/entities/order_entity.dart';
 
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
@@ -48,10 +52,14 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           ),
           CustomButton(
             onPressed: () {
-              pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeIn,
-              );
+              if (context.read<OrderEntity>().payWithCash != null) {
+                pageController.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+              } else {
+                showErrorBar(context, 'يرجي تحديد طريقه الدفع');
+              }
             },
             text: getTextByIndex(currentStep),
           ),
