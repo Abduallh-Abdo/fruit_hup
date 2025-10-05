@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/address_input_section.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/payment_section.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/shipping_section.dart';
+import 'package:provider/provider.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
-  const CheckoutStepsPageView({super.key, required this.pageController, required this.formKey, required this.valueNotifier});
+  const CheckoutStepsPageView({super.key, required this.valueNotifier});
+  final ValueNotifier<AutovalidateMode> valueNotifier;
 
-  final PageController pageController;
-  final GlobalKey<FormState> formKey;
-  final ValueNotifier<AutovalidateMode> valueNotifier ;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24),
       child: PageView.builder(
-        controller: pageController,
+        controller: context.read<PageController>(),
         physics: const NeverScrollableScrollPhysics(),
         itemCount: getPages().length,
         itemBuilder: (context, index) {
@@ -27,9 +26,9 @@ class CheckoutStepsPageView extends StatelessWidget {
   List<Widget> getPages() => [
     const ShippingSection(),
      AddressInputSection(
-      formKey:formKey ,
+
       valueNotifier: valueNotifier,
-    ),
+     ),
     const PaymentSection(),
   ];
 }

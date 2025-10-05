@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hup/core/widgets/custom_text_form_field.dart';
 import 'package:fruit_hup/features/checkout/domain/entities/order_entity.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' as provider;
 
 class AddressInputSection extends StatelessWidget {
-  const AddressInputSection({
-    super.key,
-    required this.formKey,
-    required this.valueNotifier,
-  });
-  final GlobalKey<FormState> formKey;
+  const AddressInputSection({super.key, required this.valueNotifier});
   final ValueNotifier<AutovalidateMode> valueNotifier;
-
   @override
   Widget build(BuildContext context) {
     final shippingAddress = context.read<OrderEntity>().shippingAddressEntity;
-    return ValueListenableBuilder<AutovalidateMode>(
+    final formKey = context.read<GlobalKey<FormState>>();
+
+    return ValueListenableBuilder(
       valueListenable: valueNotifier,
       builder: (context, value, child) {
         return Form(
@@ -26,7 +22,7 @@ class AddressInputSection extends StatelessWidget {
               children: [
                 CustomTextFormField(
                   onSaved: (value) {
-                    shippingAddress!.name = value;
+                    shippingAddress.name = value;
                   },
                   hintText: 'الاسم كامل',
                   textInputType: TextInputType.text,
@@ -34,7 +30,7 @@ class AddressInputSection extends StatelessWidget {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   onSaved: (value) {
-                    shippingAddress!.email = value;
+                    shippingAddress.email = value;
                   },
                   hintText: 'البريد الإلكتروني',
                   textInputType: TextInputType.text,
@@ -42,7 +38,7 @@ class AddressInputSection extends StatelessWidget {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   onSaved: (value) {
-                    shippingAddress!.address = value;
+                    shippingAddress.address = value;
                   },
                   hintText: 'العنوان',
                   textInputType: TextInputType.text,
@@ -50,7 +46,7 @@ class AddressInputSection extends StatelessWidget {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   onSaved: (value) {
-                    shippingAddress!.city = value;
+                    shippingAddress.city = value;
                   },
                   hintText: 'المدينه',
                   textInputType: TextInputType.text,
@@ -58,7 +54,7 @@ class AddressInputSection extends StatelessWidget {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   onSaved: (value) {
-                    shippingAddress!.addressDetails = value;
+                    shippingAddress.floor = value;
                   },
                   hintText: 'رقم الطابق , رقم الشقه ..',
                   textInputType: TextInputType.text,
@@ -66,7 +62,7 @@ class AddressInputSection extends StatelessWidget {
                 const SizedBox(height: 8),
                 CustomTextFormField(
                   onSaved: (value) {
-                    shippingAddress!.phone = value;
+                    shippingAddress.phone = value;
                   },
                   hintText: 'رقم الهاتف',
                   textInputType: TextInputType.number,

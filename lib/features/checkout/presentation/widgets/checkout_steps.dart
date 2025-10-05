@@ -9,10 +9,8 @@ class CheckoutSteps extends StatelessWidget {
   const CheckoutSteps({
     super.key,
     required this.currentStep,
-    required this.pageController,
   });
   final int currentStep;
-  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,7 +19,7 @@ class CheckoutSteps extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               if (context.read<OrderEntity>().payWithCash != null) {
-                pageController.animateToPage(
+                context.read<PageController>().animateToPage(
                   index,
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.bounceIn,

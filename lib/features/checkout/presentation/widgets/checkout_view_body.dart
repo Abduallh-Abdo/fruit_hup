@@ -44,32 +44,31 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: KHorizontalPadding),
-      child: Column(
-        children: [
-          const SizedBox(height: 20),
-          CheckoutSteps(
-            pageController: pageController,
-            currentStep: currentStep,
-          ),
-          Expanded(
-            child: CheckoutStepsPageView(
-              pageController: pageController,
-              formKey: formKey,
-              valueNotifier: valueNotifier,
-            ),
-          ),
-          CustomButton(
-            onPressed: () {
-              if (currentStep == 0) {
-                _handleShippingValidation(context);
-              } else if (currentStep == 1) {
-                _handleAddressValidation();
-              }
-            },
-            text: getTextByIndex(currentStep),
-          ),
-          const SizedBox(height: 32),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(value: pageController),
+          Provider<GlobalKey<FormState>>.value(value: formKey),
         ],
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            CheckoutSteps(currentStep: currentStep),
+            Expanded(
+              child: CheckoutStepsPageView(valueNotifier: valueNotifier),
+            ),
+            CustomButton(
+              onPressed: () {
+                if (currentStep == 0) {
+                  _handleShippingValidation(context);
+                } else if (currentStep == 1) {
+                  _handleAddressValidation();
+                }
+              },
+              text: getTextByIndex(currentStep),
+            ),
+            const SizedBox(height: 32),
+          ],
+        ),
       ),
     );
   }
