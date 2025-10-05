@@ -39,7 +39,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          CheckoutSteps(currentStep: currentStep),
+          CheckoutSteps(
+            pageController: pageController,
+            currentStep: currentStep,
+          ),
           Expanded(
             child: CheckoutStepsPageView(pageController: pageController),
           ),
@@ -50,11 +53,24 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 curve: Curves.easeIn,
               );
             },
-            text: 'التالي',
+            text: getTextByIndex(currentStep),
           ),
           const SizedBox(height: 32),
         ],
       ),
     );
+  }
+
+  String getTextByIndex(int index) {
+    switch (index) {
+      case 0:
+        return 'التالي';
+      case 1:
+        return 'التالي';
+      case 2:
+        return 'الدفع عير PayPal';
+      default:
+        return 'التالي';
+    }
   }
 }
