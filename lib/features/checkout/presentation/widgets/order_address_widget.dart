@@ -1,15 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/utils/app_text_styles.dart';
 import '../../../../core/utils/assets_manager.dart';
+import '../../domain/entities/order_entity.dart';
 import 'payment_item.dart';
 
-class OrderAddressWidget extends StatelessWidget {
-  const OrderAddressWidget({
-    super.key,
-  });
+class ShippingAddressWidget extends StatelessWidget {
+  const ShippingAddressWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +19,20 @@ class OrderAddressWidget extends StatelessWidget {
           SvgPicture.asset(Assets.imagesLocationIcon),
           const SizedBox(width: 8),
           Text(
-            'شارع النيل، مبنى رقم ١٢٣',
+            context.read<OrderEntity>().shippingAddressEntity.toString(),
             style: AppTextStyles.regular16.copyWith(
               color: const Color(0xff4E5556),
             ),
           ),
           const Spacer(),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              context.read<PageController>().animateToPage(
+                1,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.bounceIn,
+              );
+            },
             child: Row(
               children: [
                 SvgPicture.asset(Assets.imagesEditIcon),

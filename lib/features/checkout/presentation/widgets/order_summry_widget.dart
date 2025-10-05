@@ -1,16 +1,16 @@
-
 import 'package:flutter/material.dart';
+import 'package:fruit_hup/features/checkout/domain/entities/order_entity.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/utils/app_text_styles.dart';
 import 'payment_item.dart';
 
 class OrderSummryWidget extends StatelessWidget {
-  const OrderSummryWidget({
-    super.key,
-  });
+  const OrderSummryWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final orderEntity = context.read<OrderEntity>();
     return PaymentItem(
       title: 'ملخص الطلب :',
       child: Column(
@@ -24,7 +24,10 @@ class OrderSummryWidget extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              const Text('150 جنيه', style: AppTextStyles.semiBold16),
+              Text(
+                '${orderEntity.cartEntity.getTotalPrice()} جنيه',
+                style: AppTextStyles.semiBold16,
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -47,9 +50,12 @@ class OrderSummryWidget extends StatelessWidget {
           ),
           Row(
             children: [
-              Text('الكلي', style: AppTextStyles.bold16),
+              const Text('الكلي', style: AppTextStyles.bold16),
               const Spacer(),
-              const Text('180 جنيه', style: AppTextStyles.bold16),
+              Text(
+                '${(orderEntity.cartEntity.getTotalPrice() + 30)} جنيه',
+                style: AppTextStyles.bold16,
+              ),
             ],
           ),
         ],
