@@ -21,8 +21,8 @@ class CheckoutSteps extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               if (context.read<OrderEntity>().payWithCash != null) {
-                pageController.animateTo(
-                  index.toDouble(),
+                pageController.animateToPage(
+                  index,
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.bounceIn,
                 );
