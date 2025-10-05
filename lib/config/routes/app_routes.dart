@@ -3,6 +3,8 @@ import 'package:fruit_hup/features/auth/presentation/views/login_view.dart';
 import 'package:fruit_hup/features/auth/presentation/views/signup_view.dart';
 import 'package:fruit_hup/features/best_selling_fruits/presentation/views/best_selling_view.dart';
 import 'package:fruit_hup/features/checkout/presentation/views/checkout_view.dart';
+import 'package:fruit_hup/features/home/domain/entities/cart_entity.dart';
+import 'package:fruit_hup/features/home/domain/entities/cart_item_entity.dart';
 import 'package:fruit_hup/features/home/presentation/views/main_view.dart';
 
 import '../../features/onBoarding/presentation/views/on_boarding_view.dart';
@@ -34,7 +36,11 @@ class AppRoutes {
       case Routes.bestSellingView:
         return MaterialPageRoute(builder: (context) => const BestSellingView());
       case Routes.checkoutView:
-        return MaterialPageRoute(builder: (context) => const CheckoutView());
+        return MaterialPageRoute(
+          builder: (context) =>  CheckoutView(
+            cartEntity: routeSettings.arguments as CartEntity,
+          ),
+        );
 
       default:
         return undefinedRoute();
