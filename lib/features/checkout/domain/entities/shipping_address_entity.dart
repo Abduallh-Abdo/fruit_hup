@@ -3,7 +3,7 @@ class ShippingAddressEntity {
   String? email;
   String? address;
   String? city;
-  String? addressDetails;
+  String? floor;
   String? phone;
 
   ShippingAddressEntity({
@@ -11,7 +11,11 @@ class ShippingAddressEntity {
     this.email,
     this.address,
     this.city,
-    this.addressDetails,
+    this.floor,
     this.phone,
   });
+  @override
+  String toString() {
+    return '$address, $city, $floor';
+  }
 }
