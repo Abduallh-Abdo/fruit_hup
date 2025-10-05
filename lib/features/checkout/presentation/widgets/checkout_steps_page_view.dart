@@ -4,10 +4,11 @@ import 'package:fruit_hup/features/checkout/presentation/widgets/payment_section
 import 'package:fruit_hup/features/checkout/presentation/widgets/shipping_section.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
-  const CheckoutStepsPageView({super.key, required this.pageController});
+  const CheckoutStepsPageView({super.key, required this.pageController, required this.formKey, required this.valueNotifier});
 
   final PageController pageController;
-
+  final GlobalKey<FormState> formKey;
+  final ValueNotifier<AutovalidateMode> valueNotifier ;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +26,10 @@ class CheckoutStepsPageView extends StatelessWidget {
 
   List<Widget> getPages() => [
     const ShippingSection(),
-    const AddressInputSection(),
+     AddressInputSection(
+      formKey:formKey ,
+      valueNotifier: valueNotifier,
+    ),
     const PaymentSection(),
   ];
 }
