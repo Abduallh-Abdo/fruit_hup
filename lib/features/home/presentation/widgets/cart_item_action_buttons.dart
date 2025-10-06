@@ -24,7 +24,10 @@ class CartItemActionButtons extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text('${cartItemEntity.count}', style: AppTextStyles.bold16),
+          child: Text(
+            '${cartItemEntity.quantity}',
+            style: AppTextStyles.bold16,
+          ),
         ),
         CartItemButton(
           icon: Icons.remove,
