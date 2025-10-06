@@ -2,13 +2,15 @@ import 'package:fruit_hup/features/checkout/domain/entities/shipping_address_ent
 import 'package:fruit_hup/features/home/domain/entities/cart_entity.dart';
 
 class OrderEntity {
+  final String uId;
   final CartEntity cartEntity;
   bool? payWithCash;
-  ShippingAddressEntity shippingAddressEntity ;
+  ShippingAddressEntity shippingAddressEntity;
 
   OrderEntity({
     required this.cartEntity,
+    required this.uId,
     this.payWithCash,
-   required this.shippingAddressEntity,
+    required this.shippingAddressEntity,
   });
 }

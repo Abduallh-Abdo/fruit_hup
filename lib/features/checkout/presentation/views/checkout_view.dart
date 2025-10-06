@@ -6,6 +6,8 @@ import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_view_b
 import 'package:fruit_hup/features/home/domain/entities/cart_entity.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/helper/functions/get_user.dart';
+
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key, required this.cartEntity});
   final CartEntity cartEntity;
@@ -19,6 +21,7 @@ class CheckoutView extends StatelessWidget {
       ),
       body: Provider.value(
         value: OrderEntity(
+          uId: getUser().uId,
           cartEntity: cartEntity,
           shippingAddressEntity: ShippingAddressEntity(),
         ),
