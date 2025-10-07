@@ -101,7 +101,6 @@ class FirebaseAuthService {
   //     facebookAuthCredential,
   //   )).user!;
   // }
-  
 
   Future<void> deleteUSer() async {
     await FirebaseAuth.instance.currentUser!.delete();
@@ -110,9 +109,8 @@ class FirebaseAuthService {
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
   }
-  bool isLogged()  {
-   return  FirebaseAuth.instance.currentUser != null;
-  }
 
-  
+  bool isLogged() {
+    return FirebaseAuth.instance.currentUser != null;
+  }
 }

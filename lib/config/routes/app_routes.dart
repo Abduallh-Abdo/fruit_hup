@@ -37,9 +37,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const BestSellingView());
       case Routes.checkoutView:
         return MaterialPageRoute(
-          builder: (context) =>  CheckoutView(
-            cartEntity: routeSettings.arguments as CartEntity,
-          ),
+          builder: (context) =>
+              CheckoutView(cartEntity: routeSettings.arguments as CartEntity),
         );
 
       default:

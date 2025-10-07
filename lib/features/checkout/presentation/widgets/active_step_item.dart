@@ -5,7 +5,7 @@ import '../../../../core/utils/app_colors.dart';
 
 class ActiveStepItem extends StatelessWidget {
   const ActiveStepItem({super.key, required this.text});
-final String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Row(

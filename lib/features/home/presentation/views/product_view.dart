@@ -12,9 +12,7 @@ class ProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubit(
-        productsRepo: sl<ProductsRepo>(),
-      ),
+      create: (context) => ProductCubit(productsRepo: sl<ProductsRepo>()),
       child: const ProductViewBody(),
     );
   }

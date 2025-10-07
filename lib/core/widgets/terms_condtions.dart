@@ -7,7 +7,7 @@ import '../utils/app_text_styles.dart';
 
 class TermsCondtions extends StatefulWidget {
   const TermsCondtions({super.key, required this.onChanged});
-final ValueChanged<bool> onChanged;
+  final ValueChanged<bool> onChanged;
   @override
   State<TermsCondtions> createState() => _TermsCondtionsState();
 }

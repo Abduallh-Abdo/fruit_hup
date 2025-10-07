@@ -24,13 +24,13 @@ class OrderProductModel {
     );
   }
 
-  toJson(){
+  toJson() {
     return {
       'code': code,
       'name': name,
       'imageUrl': imageUrl,
       'price': price,
-      'quantity': quantity
+      'quantity': quantity,
     };
   }
 }

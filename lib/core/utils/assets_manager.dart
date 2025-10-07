@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
+
   /// Assets for imagesAppleIcon
   /// assets/images/apple_icon.svg
   static const String imagesAppleIcon = "assets/images/apple_icon.svg";
@@ -52,19 +52,23 @@ class Assets {
 
   /// Assets for imagesPageViewItem1BackgroundImage
   /// assets/images/page_view_item1_background_image.svg
-  static const String imagesPageViewItem1BackgroundImage = "assets/images/page_view_item1_background_image.svg";
+  static const String imagesPageViewItem1BackgroundImage =
+      "assets/images/page_view_item1_background_image.svg";
 
   /// Assets for imagesPageViewItem1Image
   /// assets/images/page_view_item1_image.svg
-  static const String imagesPageViewItem1Image = "assets/images/page_view_item1_image.svg";
+  static const String imagesPageViewItem1Image =
+      "assets/images/page_view_item1_image.svg";
 
   /// Assets for imagesPageViewItem2BackgroundImage
   /// assets/images/page_view_item2_background_image.svg
-  static const String imagesPageViewItem2BackgroundImage = "assets/images/page_view_item2_background_image.svg";
+  static const String imagesPageViewItem2BackgroundImage =
+      "assets/images/page_view_item2_background_image.svg";
 
   /// Assets for imagesPageViewItem2Image
   /// assets/images/page_view_item2_image.svg
-  static const String imagesPageViewItem2Image = "assets/images/page_view_item2_image.svg";
+  static const String imagesPageViewItem2Image =
+      "assets/images/page_view_item2_image.svg";
 
   /// Assets for imagesPlant
   /// assets/images/plant.svg
@@ -76,7 +80,8 @@ class Assets {
 
   /// Assets for imagesProductOutline
   /// assets/images/product_outline.svg
-  static const String imagesProductOutline = "assets/images/product_outline.svg";
+  static const String imagesProductOutline =
+      "assets/images/product_outline.svg";
 
   /// Assets for imagesProfileImage
   /// assets/images/profile_image.png
@@ -88,11 +93,13 @@ class Assets {
 
   /// Assets for imagesShoppingCartBold
   /// assets/images/shopping_cart_bold.svg
-  static const String imagesShoppingCartBold = "assets/images/shopping_cart_bold.svg";
+  static const String imagesShoppingCartBold =
+      "assets/images/shopping_cart_bold.svg";
 
   /// Assets for imagesShoppingCartOutline
   /// assets/images/shopping_cart_outline.svg
-  static const String imagesShoppingCartOutline = "assets/images/shopping_cart_outline.svg";
+  static const String imagesShoppingCartOutline =
+      "assets/images/shopping_cart_outline.svg";
 
   /// Assets for imagesSortby
   /// assets/images/sortby.svg
@@ -116,6 +123,6 @@ class Assets {
 
   /// Assets for imagesWatermelonTest
   /// assets/images/watermelon_test.png
-  static const String imagesWatermelonTest = "assets/images/watermelon_test.png";
+  static const String imagesWatermelonTest =
+      "assets/images/watermelon_test.png";
 }
-

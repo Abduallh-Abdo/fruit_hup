@@ -10,7 +10,6 @@ class BottomNavBarEntity {
   });
 }
 
-
 List<BottomNavBarEntity> listBottomNavBarEntity = [
   BottomNavBarEntity(
     activeImage: Assets.imagesHomeBold,

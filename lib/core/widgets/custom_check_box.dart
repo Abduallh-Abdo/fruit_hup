@@ -15,7 +15,7 @@ class CustomCheckBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         onChanged(!isChecked);
       },
       child: AnimatedContainer(

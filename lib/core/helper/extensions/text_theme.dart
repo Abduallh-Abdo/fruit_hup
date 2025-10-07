@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 //implement displayLarge=context.displayLarge;
 
 extension MediaQueryValues on BuildContext {
@@ -19,5 +18,4 @@ extension MediaQueryValues on BuildContext {
   TextStyle? get labelLarge => Theme.of(this).textTheme.labelLarge;
   TextStyle? get labelMedium => Theme.of(this).textTheme.labelMedium;
   TextStyle? get labelSmall => Theme.of(this).textTheme.labelSmall;
-
 }

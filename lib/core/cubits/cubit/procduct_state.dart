@@ -8,12 +8,15 @@ sealed class ProductState extends Equatable {
 }
 
 final class ProductInitial extends ProductState {}
+
 final class ProductLoading extends ProductState {}
+
 final class ProductFailure extends ProductState {
   final String errorMessage;
 
   const ProductFailure({required this.errorMessage});
 }
+
 final class ProductSuccess extends ProductState {
   final List<ProductEntity> products;
 

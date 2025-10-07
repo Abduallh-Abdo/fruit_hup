@@ -1,13 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../utils/assets_manager.dart';
 
 class NotificationButton extends StatelessWidget {
-  const NotificationButton({
-    super.key,
-  });
+  const NotificationButton({super.key});
 
   @override
   Widget build(BuildContext context) {

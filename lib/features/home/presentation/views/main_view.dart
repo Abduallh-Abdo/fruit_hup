@@ -5,7 +5,6 @@ import 'package:fruit_hup/features/home/presentation/widgets/custom_bottom_nav_b
 
 import '../widgets/main_view_body_bloc_listener.dart';
 
-
 class MainView extends StatefulWidget {
   const MainView({super.key});
 

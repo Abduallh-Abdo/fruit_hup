@@ -7,7 +7,8 @@ class DontHaveAccountWidget extends StatelessWidget {
   const DontHaveAccountWidget({
     super.key,
     required this.textAction,
-    required this.text, required this.onTap,
+    required this.text,
+    required this.onTap,
   });
   final String textAction;
   final String text;
@@ -22,8 +23,7 @@ class DontHaveAccountWidget extends StatelessWidget {
           const TextSpan(text: ' '),
 
           TextSpan(
-            recognizer: TapGestureRecognizer()
-              ..onTap = onTap,
+            recognizer: TapGestureRecognizer()..onTap = onTap,
             text: textAction,
             style: AppTextStyles.semiBold16.copyWith(
               color: AppColors.primaryColor,
