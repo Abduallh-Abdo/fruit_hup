@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hup/core/utils/constants.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
+import 'package:fruit_hup/features/checkout/presentation/cubit/add_orders_cubit/add_orders_cubit.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps_page_view.dart';
 import 'package:provider/provider.dart';
@@ -62,6 +63,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   _handleShippingValidation(context);
                 } else if (currentStep == 1) {
                   _handleAddressValidation();
+                } else {
+                  final orderEntity = context.read<OrderEntity>();
+                  context.read<AddOrdersCubit>().addOrders(
+                    orderEntity: orderEntity,
+                  );
                 }
               },
               text: getTextByIndex(currentStep),
