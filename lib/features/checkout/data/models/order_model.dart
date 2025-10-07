@@ -16,22 +16,28 @@ class OrderModel {
     required this.orderProductModelList,
     required this.paymentMethod,
   });
-factory OrderModel.fromEntity(OrderEntity orderEntity){
-  return OrderModel(
-    uId: orderEntity.uId,
-    totalPrice: orderEntity.cartEntity.getTotalPrice(),
-    shippingAddressModel: ShippingAddressModel.fromEntity(orderEntity.shippingAddressEntity),
-    orderProductModelList: orderEntity.cartEntity.cartItmes.map((e) => OrderProductModel.fromEntity(e)).toList(),
-    paymentMethod: orderEntity.payWithCash! ? ' ' : 'online',
-  ) ; 
-}
-  toJson(){
-    return{
+  factory OrderModel.fromEntity(OrderEntity orderEntity) {
+    return OrderModel(
+      uId: orderEntity.uId,
+      totalPrice: orderEntity.cartEntity.getTotalPrice(),
+      shippingAddressModel: ShippingAddressModel.fromEntity(
+        orderEntity.shippingAddressEntity,
+      ),
+      orderProductModelList: orderEntity.cartEntity.cartItmes
+          .map((e) => OrderProductModel.fromEntity(e))
+          .toList(),
+      paymentMethod: orderEntity.payWithCash! ? 'cash' : 'online',
+    );
+  }
+  toJson() {
+    return {
       'uId': uId,
       'totalPrice': totalPrice,
       'shippingAddressModel': shippingAddressModel.toJson(),
-      'orderProductModelList': orderProductModelList.map((e) => e.toJson()).toList(),
+      'orderProductModelList': orderProductModelList
+          .map((e) => e.toJson())
+          .toList(),
       'paymentMethod': paymentMethod,
-    }; 
-  } 
+    };
+  }
 }
