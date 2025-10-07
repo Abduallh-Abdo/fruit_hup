@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:fruit_hup/core/utils/app_secrets.dart';
 import 'package:fruit_hup/core/utils/constants.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
-import 'package:fruit_hup/features/checkout/presentation/cubit/add_orders_cubit/add_orders_cubit.dart';
+import 'package:fruit_hup/features/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps_page_view.dart';
 import 'package:provider/provider.dart';
@@ -64,10 +68,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 } else if (currentStep == 1) {
                   _handleAddressValidation();
                 } else {
-                  final orderEntity = context.read<OrderEntity>();
-                  context.read<AddOrdersCubit>().addOrders(
-                    orderEntity: orderEntity,
-                  );
+                  _handlePaymentValidation(context);
+                  // final orderEntity = context.read<OrderEntity>();
+                  // context.read<AddOrdersCubit>().addOrders(
+                  //   orderEntity: orderEntity,
+                  // );
                 }
               },
               text: getTextByIndex(currentStep),
@@ -113,5 +118,32 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     } else {
       valueNotifier.value = AutovalidateMode.always;
     }
+  }
+
+  void _handlePaymentValidation(BuildContext context) {
+    final orderEntity = context.read<OrderEntity>();
+    final PaypalPaymentEntity paypalPaymentEntity =
+        PaypalPaymentEntity.fromEntity(orderEntity);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) => PaypalCheckoutView(
+          sandboxMode: true,
+          clientId: AppSecrets.payPalClientId,
+          secretKey: AppSecrets.payPalSecretKey,
+          transactions: [paypalPaymentEntity.toJson()],
+          note: "Contact us for any questions on your order.",
+          onSuccess: (Map params) async {
+            log("onSuccess: $params");
+          },
+          onError: (error) {
+            log("onError: $error");
+            Navigator.pop(context);
+          },
+          onCancel: () {
+            log('cancelled:');
+          },
+        ),
+      ),
+    );
   }
 }
