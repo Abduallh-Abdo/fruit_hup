@@ -18,7 +18,7 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
           context.pushReplacementNamed(Routes.homeView);
         }
         if (state is LoginFailure) {
-          showErrorBar(context, state.errorMessage);
+          showBar(context, state.errorMessage);
         }
       },
       builder: (context, state) {

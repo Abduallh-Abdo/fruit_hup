@@ -75,7 +75,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                             password,
                           );
                     } else {
-                      showErrorBar(
+                      showBar(
                         context,
                         'يجب الموافقة على الموافقة على الشروط والأحكام',
                       );

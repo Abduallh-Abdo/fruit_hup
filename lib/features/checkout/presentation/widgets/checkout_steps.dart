@@ -6,10 +6,7 @@ import 'package:provider/provider.dart';
 import '../../domain/entities/order_entity.dart';
 
 class CheckoutSteps extends StatelessWidget {
-  const CheckoutSteps({
-    super.key,
-    required this.currentStep,
-  });
+  const CheckoutSteps({super.key, required this.currentStep});
   final int currentStep;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +22,7 @@ class CheckoutSteps extends StatelessWidget {
                   curve: Curves.bounceIn,
                 );
               } else {
-                showErrorBar(context, 'يرجي تحديد طريقه الدفع');
+                showBar(context, 'يرجي تحديد طريقه الدفع');
               }
             },
             child: StepItem(

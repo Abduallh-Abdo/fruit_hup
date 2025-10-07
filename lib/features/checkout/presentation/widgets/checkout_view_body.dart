@@ -80,7 +80,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         curve: Curves.easeIn,
       );
     } else {
-      showErrorBar(context, 'يرجي تحديد طريقه الدفع');
+      showBar(context, 'يرجي تحديد طريقه الدفع');
     }
   }
 
