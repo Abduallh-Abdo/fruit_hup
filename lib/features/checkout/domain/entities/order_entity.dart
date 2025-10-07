@@ -13,4 +13,24 @@ class OrderEntity {
     this.payWithCash,
     required this.shippingAddressEntity,
   });
+
+  double calculateshippingPrice() {
+    if (payWithCash!) {
+      return 30;
+    } else {
+      return 0;
+    }
+  }
+
+  double calculateshippingDiscount() {
+    return 0;
+  }
+
+  double getTotalPriceAfterDiscountAndShipping() {
+    return cartEntity.getTotalPrice() +
+        calculateshippingPrice() -
+        calculateshippingDiscount();
+  }
+
+
 }
