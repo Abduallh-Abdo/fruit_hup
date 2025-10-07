@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hup/features/checkout/presentation/cubit/add_orders_cubit/add_orders_cubit.dart';
 
 import '../../../../core/helper/functions/build_error_bar.dart';
+import '../../../../core/widgets/custom_progress_hud.dart';
 
 class AddOrderCubitBolcConsumer extends StatelessWidget {
   const AddOrderCubitBolcConsumer({super.key, required this.child});
@@ -19,7 +20,10 @@ class AddOrderCubitBolcConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return child;
+        return CustomProgressHud(
+          isLoading: state is AddOrdersLoading,
+          child: child,
+        );
       },
     );
   }
