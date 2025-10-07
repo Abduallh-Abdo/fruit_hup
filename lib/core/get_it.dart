@@ -1,3 +1,5 @@
+import 'package:fruit_hup/core/repos/orders_repo/orders_repo.dart';
+import 'package:fruit_hup/core/repos/orders_repo/orders_repo_impl.dart';
 import 'package:fruit_hup/core/repos/products_repo/products_repo.dart';
 import 'package:fruit_hup/core/repos/products_repo/products_repo_impl.dart';
 import 'package:fruit_hup/core/services/database_service.dart';
@@ -20,5 +22,8 @@ void setupGetIt() {
   );
   sl.registerSingleton<ProductsRepo>(
     ProductsRepoImpl(databaseService: sl<DatabaseService>()),
+  );
+  sl.registerSingleton<OrdersRepo>(
+    OrdersRepoImpl(databaseService: sl<DatabaseService>()),
   );
 }
