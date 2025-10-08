@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hup/core/get_it.dart';
 import 'package:fruit_hup/core/widgets/build_app_bar.dart';
-import 'package:fruit_hup/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_hup/features/checkout/domain/entities/order_input_entity.dart';
 import 'package:fruit_hup/features/checkout/domain/entities/shipping_address_entity.dart';
 import 'package:fruit_hup/features/checkout/presentation/cubit/add_orders_cubit/add_orders_cubit.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/add_order_cubit_bolc_consumer.dart';
@@ -22,10 +22,10 @@ class CheckoutView extends StatefulWidget {
 }
 
 class _CheckoutViewState extends State<CheckoutView> {
-  late OrderEntity orderEntity;
+  late OrderInputEntity orderEntity;
   @override
   void initState() {
-    orderEntity = OrderEntity(
+    orderEntity = OrderInputEntity(
       uId: getUser().uId,
       cartEntity: widget.cartEntity,
       shippingAddressEntity: ShippingAddressEntity(),

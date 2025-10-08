@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hup/core/widgets/custom_text_form_field.dart';
-import 'package:fruit_hup/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_hup/features/checkout/domain/entities/order_input_entity.dart';
 import 'package:provider/provider.dart' as provider;
 
 class AddressInputSection extends StatelessWidget {
@@ -8,7 +8,9 @@ class AddressInputSection extends StatelessWidget {
   final ValueNotifier<AutovalidateMode> valueNotifier;
   @override
   Widget build(BuildContext context) {
-    final shippingAddress = context.read<OrderEntity>().shippingAddressEntity;
+    final shippingAddress = context
+        .read<OrderInputEntity>()
+        .shippingAddressEntity;
     final formKey = context.read<GlobalKey<FormState>>();
 
     return ValueListenableBuilder(

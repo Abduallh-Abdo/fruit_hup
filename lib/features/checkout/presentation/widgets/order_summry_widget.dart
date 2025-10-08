@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hup/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_hup/features/checkout/domain/entities/order_input_entity.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/utils/app_text_styles.dart';
@@ -10,7 +10,7 @@ class OrderSummryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final orderEntity = context.read<OrderEntity>();
+    final orderEntity = context.read<OrderInputEntity>();
     return PaymentItem(
       title: 'ملخص الطلب :',
       child: Column(

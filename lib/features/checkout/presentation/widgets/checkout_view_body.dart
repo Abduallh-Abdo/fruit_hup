@@ -12,7 +12,7 @@ import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps_
 import 'package:provider/provider.dart';
 
 import '../../../../core/helper/functions/build_error_bar.dart';
-import '../../domain/entities/order_entity.dart';
+import '../../domain/entities/order_input_entity.dart';
 
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
@@ -68,7 +68,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                     curve: Curves.bounceIn,
                   );
                 } else if (currentStep == 1) {
-                  if (context.read<OrderEntity>().payWithCash != null) {
+                  if (context.read<OrderInputEntity>().payWithCash != null) {
                     context.read<PageController>().animateToPage(
                       index,
                       duration: const Duration(milliseconds: 300),
@@ -105,7 +105,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _handleShippingValidation(BuildContext context) {
-    if (context.read<OrderEntity>().payWithCash != null) {
+    if (context.read<OrderInputEntity>().payWithCash != null) {
       pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeIn,
@@ -141,7 +141,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _handlePaymentValidation(BuildContext context) {
-    final orderEntity = context.read<OrderEntity>();
+    final orderEntity = context.read<OrderInputEntity>();
     final PaypalPaymentEntity paypalPaymentEntity =
         PaypalPaymentEntity.fromEntity(orderEntity);
     final addOrderCubit = context.read<AddOrdersCubit>();
@@ -157,10 +157,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           onSuccess: (Map params) async {
             log("onSuccess: $params");
             addOrderCubit.addOrders(orderEntity: orderEntity);
-            // Navigator.pop(context);
+            Navigator.pop(context);
           },
           onError: (error) {
             log("onError: $error");
+            showBar(context, 'حدث خطأ في الدفع');
             Navigator.pop(context);
           },
           onCancel: () {

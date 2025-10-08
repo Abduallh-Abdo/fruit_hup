@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/shipping_item.dart';
 import 'package:provider/provider.dart';
 
-import '../../domain/entities/order_entity.dart';
+import '../../domain/entities/order_input_entity.dart';
 
 class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key});
@@ -17,7 +17,7 @@ class _ShippingSectionState extends State<ShippingSection>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final orderEntity = context.read<OrderEntity>();
+    final orderEntity = context.read<OrderInputEntity>();
     return Column(
       children: [
         const SizedBox(height: 16),

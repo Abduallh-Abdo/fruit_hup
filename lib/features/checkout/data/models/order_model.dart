@@ -1,6 +1,6 @@
 import 'package:fruit_hup/features/checkout/data/models/order_product_model.dart';
 import 'package:fruit_hup/features/checkout/data/models/shipping_address_model.dart';
-import 'package:fruit_hup/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_hup/features/checkout/domain/entities/order_input_entity.dart';
 
 class OrderModel {
   final String uId;
@@ -16,7 +16,7 @@ class OrderModel {
     required this.orderProductModelList,
     required this.paymentMethod,
   });
-  factory OrderModel.fromEntity(OrderEntity orderEntity) {
+  factory OrderModel.fromEntity(OrderInputEntity orderEntity) {
     return OrderModel(
       uId: orderEntity.uId,
       totalPrice: orderEntity.cartEntity.getTotalPrice(),

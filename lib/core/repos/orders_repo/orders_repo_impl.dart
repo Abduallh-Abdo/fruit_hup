@@ -5,7 +5,7 @@ import 'package:fruit_hup/core/errors/failure.dart';
 import 'package:fruit_hup/core/repos/orders_repo/orders_repo.dart';
 import 'package:fruit_hup/core/services/database_service.dart';
 import 'package:fruit_hup/features/checkout/data/models/order_model.dart';
-import 'package:fruit_hup/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_hup/features/checkout/domain/entities/order_input_entity.dart';
 
 import '../../utils/backend_endpoint.dart';
 
@@ -15,7 +15,7 @@ class OrdersRepoImpl implements OrdersRepo {
   OrdersRepoImpl({required this.databaseService});
   @override
   Future<Either<Failure, void>> addOrder({
-    required OrderEntity orderEntity,
+    required OrderInputEntity orderEntity,
   }) async {
     try {
       await databaseService.addData(

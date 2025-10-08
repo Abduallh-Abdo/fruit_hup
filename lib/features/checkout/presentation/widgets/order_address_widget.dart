@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/utils/app_text_styles.dart';
 import '../../../../core/utils/assets_manager.dart';
-import '../../domain/entities/order_entity.dart';
+import '../../domain/entities/order_input_entity.dart';
 import 'payment_item.dart';
 
 class ShippingAddressWidget extends StatelessWidget {
@@ -19,7 +19,7 @@ class ShippingAddressWidget extends StatelessWidget {
           SvgPicture.asset(Assets.imagesLocationIcon),
           const SizedBox(width: 8),
           Text(
-            context.read<OrderEntity>().shippingAddressEntity.toString(),
+            context.read<OrderInputEntity>().shippingAddressEntity.toString(),
             style: AppTextStyles.regular16.copyWith(
               color: const Color(0xff4E5556),
             ),
