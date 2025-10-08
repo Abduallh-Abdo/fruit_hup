@@ -32,6 +32,7 @@ class OrderModel {
   toJson() {
     return {
       'uId': uId,
+      'status':'pending',
       'totalPrice': totalPrice,
       'shippingAddressModel': shippingAddressModel.toJson(),
       'orderProductModelList': orderProductModelList
