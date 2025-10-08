@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hup/core/helper/functions/build_error_bar.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/step_item.dart';
-import 'package:provider/provider.dart';
 
-import '../../domain/entities/order_entity.dart';
 
 class CheckoutSteps extends StatelessWidget {
-  const CheckoutSteps({super.key, required this.currentStep});
+  const CheckoutSteps({super.key, required this.currentStep, required this.onTap});
   final int currentStep;
+  final ValueChanged<int> onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,15 +13,7 @@ class CheckoutSteps extends StatelessWidget {
         return Expanded(
           child: GestureDetector(
             onTap: () {
-              if (context.read<OrderEntity>().payWithCash != null) {
-                context.read<PageController>().animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.bounceIn,
-                );
-              } else {
-                showBar(context, 'يرجي تحديد طريقه الدفع');
-              }
+            onTap(index);
             },
             child: StepItem(
               index: (index + 1).toString(),

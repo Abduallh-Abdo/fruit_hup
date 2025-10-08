@@ -58,7 +58,30 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            CheckoutSteps(currentStep: currentStep),
+            CheckoutSteps(
+              currentStep: currentStep,
+              onTap: (index) {
+                if (currentStep == 0) {
+                  context.read<PageController>().animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.bounceIn,
+                  );
+                } else if (currentStep == 1) {
+                  if (context.read<OrderEntity>().payWithCash != null) {
+                    context.read<PageController>().animateToPage(
+                      index,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.bounceIn,
+                    );
+                  } else {
+                    showBar(context, 'يرجي تحديد طريقه الدفع');
+                  }
+                } else {
+                  _handleAddressValidation();
+                }
+              },
+            ),
             Expanded(
               child: CheckoutStepsPageView(valueNotifier: valueNotifier),
             ),
