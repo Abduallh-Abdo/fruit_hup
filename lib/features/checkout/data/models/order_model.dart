@@ -32,7 +32,8 @@ class OrderModel {
   toJson() {
     return {
       'uId': uId,
-      'status':'pending',
+      'status': 'pending',
+      'date': DateTime.now().toString(),
       'totalPrice': totalPrice,
       'shippingAddressModel': shippingAddressModel.toJson(),
       'orderProductModelList': orderProductModelList
