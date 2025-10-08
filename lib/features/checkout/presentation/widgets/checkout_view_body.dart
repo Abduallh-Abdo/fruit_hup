@@ -6,6 +6,7 @@ import 'package:fruit_hup/core/utils/app_secrets.dart';
 import 'package:fruit_hup/core/utils/constants.dart';
 import 'package:fruit_hup/core/widgets/custom_button.dart';
 import 'package:fruit_hup/features/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
+import 'package:fruit_hup/features/checkout/presentation/cubit/add_orders_cubit/add_orders_cubit.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps.dart';
 import 'package:fruit_hup/features/checkout/presentation/widgets/checkout_steps_page_view.dart';
 import 'package:provider/provider.dart';
@@ -69,10 +70,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   _handleAddressValidation();
                 } else {
                   _handlePaymentValidation(context);
-                  // final orderEntity = context.read<OrderEntity>();
-                  // context.read<AddOrdersCubit>().addOrders(
-                  //   orderEntity: orderEntity,
-                  // );
                 }
               },
               text: getTextByIndex(currentStep),
@@ -124,6 +121,8 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     final orderEntity = context.read<OrderEntity>();
     final PaypalPaymentEntity paypalPaymentEntity =
         PaypalPaymentEntity.fromEntity(orderEntity);
+    final addOrderCubit = context.read<AddOrdersCubit>();
+
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (BuildContext context) => PaypalCheckoutView(
@@ -134,6 +133,8 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           note: "Contact us for any questions on your order.",
           onSuccess: (Map params) async {
             log("onSuccess: $params");
+            addOrderCubit.addOrders(orderEntity: orderEntity);
+            // Navigator.pop(context);
           },
           onError: (error) {
             log("onError: $error");
