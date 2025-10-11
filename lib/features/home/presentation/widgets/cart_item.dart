@@ -9,6 +9,7 @@ import 'package:fruit_hup/features/home/presentation/cubit/cart_cubit/cart_cubit
 import 'package:fruit_hup/features/home/presentation/widgets/cart_item_action_buttons.dart';
 
 import '../../../../core/utils/assets_manager.dart';
+import '../../../../core/widgets/custom_network_image.dart';
 import '../cubit/cart_item_cubit/cart_item_cubit.dart';
 
 class CartItem extends StatelessWidget {

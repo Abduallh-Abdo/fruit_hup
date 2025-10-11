@@ -5,6 +5,7 @@ import 'package:fruit_hup/features/home/presentation/cubit/cart_cubit/cart_cubit
 
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
+import 'custom_network_image.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
@@ -91,13 +92,3 @@ class FruitItem extends StatelessWidget {
   }
 }
 
-class CustomNetworkImage extends StatelessWidget {
-  const CustomNetworkImage({super.key, required this.imageUrl});
-
-  final String imageUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.network(imageUrl);
-  }
-}
