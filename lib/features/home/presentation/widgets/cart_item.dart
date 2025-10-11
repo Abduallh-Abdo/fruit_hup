@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_hup/core/utils/app_colors.dart';
 import 'package:fruit_hup/core/utils/app_text_styles.dart';
-import 'package:fruit_hup/core/widgets/fruit_item.dart';
 import 'package:fruit_hup/features/home/domain/entities/cart_item_entity.dart';
 import 'package:fruit_hup/features/home/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:fruit_hup/features/home/presentation/widgets/cart_item_action_buttons.dart';
