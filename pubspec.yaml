@@ -62,5 +62,7 @@ flutter_assets:
   output_path: lib/core/utils
   filename: assets_manager.dart
   field_prefix: null
+
+    # localization generator
 flutter_intl:
   enabled: true

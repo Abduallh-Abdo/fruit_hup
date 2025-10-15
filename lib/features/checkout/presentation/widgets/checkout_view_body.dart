@@ -92,7 +92,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 } else if (currentStep == 1) {
                   _handleAddressValidation();
                 } else {
-                  _handlePaymentValidation(context);
+                  // _handlePaymentValidation(context);
+                  final orderEntity = context.read<OrderInputEntity>();
+                  context.read<AddOrdersCubit>().addOrders(
+                    orderEntity: orderEntity,
+                  );
                 }
               },
               text: getTextByIndex(currentStep),
